@@ -16,11 +16,19 @@ use Illuminate\View\View;
 class RegisteredUserController extends Controller
 {
     /**
-     * Display the registration view.
+     * Display the registration view for ticket buyer.
      */
     public function create(): View
     {
-        return view('auth.register');
+        return view('ticket-buyer.register');
+    }
+
+    /**
+     * Display the registration view for event organizer.
+     */
+    public function create_eo(): View
+    {
+        return view('event-organizer.register');
     }
 
     /**

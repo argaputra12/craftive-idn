@@ -17,12 +17,12 @@
         <div class="relative overflow-hidden rounded-l-md h-[853px]">
           <!-- Item 1 -->
           <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="{{ asset('storage/images/market-carousel.jpg') }}"
+            <img src="{{ asset('storage/images/art-event.png') }}"
               class="absolute block h-full w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
           </div>
           <!-- Item 2 -->
           <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="{{ asset('storage/images/market-carousel.jpg') }}"
+            <img src="{{ asset('storage/images/art-event.png') }}"
               class="absolute block h-full w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
           </div>
         </div>
@@ -110,11 +110,16 @@
           <p class="w-4/5 text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
       </div>
-      <div class="flex justify-center">
-        <button
+      <div class="flex justify-center items-center gap-7">
+        <a href="{{ route('register') }}"
           class="border-2 border-black font-semibold text-lg px-6 py-2 hover:bg-black hover:text-white transition-all duration-200">
-          Register Now
-        </button>
+          Register as Ticket Buyer
+        </a>
+        <p class="uppercase text-lg">or</p>
+        <a href="{{ route('register_eo') }}"
+          class="border-2 border-black font-semibold text-lg px-6 py-2 hover:bg-black hover:text-white transition-all duration-200">
+          Register as Event Organizer
+        </a>
       </div>
     </div>
   </div>
@@ -471,43 +476,44 @@
   <!-- Footer -->
   <div id="footer" class="w-full bg-primary-background">
     <div class="flex justify-between max-w-screen-xl mx-auto py-20 text-gray-700">
-      <div class="flex flex-col gap-8 justify-start w-80">
+      <div class="flex flex-col gap-6 justify-start w-80">
         <div class="flex items-center gap-2">
-            <img src="{{ asset('storage/images/Logo.png') }}" alt="" class="h-9">
-            <p class="text-2xl font-bold">Craftive.id</p>
+          <img src="{{ asset('storage/images/Logo.png') }}" alt="" class="h-9">
+          <p class="text-2xl font-bold">Craftive.id</p>
         </div>
         <div class="text-justify">
-            We are one of the leading interior design and remodeling studios available for all of your residential and commercial interior design needs.
+          We are one of the leading interior design and remodeling studios available for all of your residential and
+          commercial interior design needs.
         </div>
       </div>
-      <div class="flex flex-col gap-8 justify-start">
+      <div class="flex flex-col gap-6 justify-start">
         <h1 class="uppercase font-bold items-center">navigation</h1>
         <div class="flex flex-col gap-5">
-            <p>About</p>
-            <p>Services</p>
-            <p>Portofolio</p>
-            <p>On Going Events</p>
-            <p>Testimonials</p>
+          <p>About</p>
+          <p>Services</p>
+          <p>Portofolio</p>
+          <p>On Going Events</p>
+          <p>Testimonials</p>
         </div>
-        <div class="flex gap-4">
-            <i class="fa-brands fa-linkedin fa-xl"></i>
-            <i class="fa-brands fa-square-whatsapp fa-xl"></i>
-            <i class="fa-brands fa-square-instagram fa-xl"></i>
+        <div class="flex gap-4 mt-2">
+          <i class="fa-brands fa-linkedin fa-xl"></i>
+          <i class="fa-brands fa-square-whatsapp fa-xl"></i>
+          <i class="fa-brands fa-square-instagram fa-xl"></i>
         </div>
       </div>
-      <div class="flex flex-col justify-start gap-8">
+      <div class="flex flex-col justify-start gap-6">
         <h1 class="uppercase font-bold">contacts</h1>
         <div class="flex flex-col gap-2">
-            <h2>ADDRESS</h2>
-            <p>Jalan Craftive No 666, Surakarta</p>
+          <h2>ADDRESS</h2>
+          <p>Jalan Craftive No 666, Surakarta</p>
         </div>
         <div class="flex flex-col gap-2">
-            <h2>EMAIL</h2>
-            <p>infocraftive@gmail.com</p>
+          <h2>EMAIL</h2>
+          <p>infocraftive@gmail.com</p>
         </div>
         <div class="flex flex-col gap-2">
-            <h2>PHONE</h2>
-            <p>+62213131324</p>
+          <h2>PHONE</h2>
+          <p>+62213131324</p>
         </div>
       </div>
     </div>

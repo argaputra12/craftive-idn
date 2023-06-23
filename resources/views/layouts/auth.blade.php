@@ -22,10 +22,9 @@
   <script src="https://kit.fontawesome.com/0b736e1e36.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="font-sans text-gray-900 antialiased bg-white">
- @include('components.navbar')
-  <div class="flex flex-wrap items-center justify-between mx-auto">
-    {{ $slot }}
+<body class="font-sans text-gray-900 antialiased bg-primary-background">
+  <div class="flex flex-wrap items-center justify-center mx-auto min-h-screen">
+    @yield('content')
   </div>
 
 </body>
