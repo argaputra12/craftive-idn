@@ -42,4 +42,32 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // relationships
+
+    /**
+     * Get the ticket buyer associated with the user.
+     */
+    public function ticketBuyer()
+    {
+        return $this->hasOne(TicketBuyer::class);
+    }
+
+    /**
+     * Get the event organizer associated with the user.
+     */
+
+    public function eventOrganizer()
+    {
+        return $this->hasOne(EventOrganizer::class);
+    }
+
+    /**
+     * Get the admin associated with the user.
+     */
+
+    public function admin()
+    {
+        return $this->hasOne(Admin::class);
+    }
 }
