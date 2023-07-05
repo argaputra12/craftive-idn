@@ -16,12 +16,15 @@ Route::middleware('guest')->group(function () {
                 ->name('register');
 
     Route::get('eo/register', [RegisteredUserController::class, 'create_eo'])
-                ->name('register_eo');
+                ->name('eo.register');
 
     Route::post('register', [RegisteredUserController::class, 'store']);
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
                 ->name('login');
+
+    Route::get('eo/login', [AuthenticatedSessionController::class, 'create_eo'])
+                ->name('eo.login');
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 

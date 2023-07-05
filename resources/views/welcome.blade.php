@@ -116,7 +116,7 @@
           Register as Ticket Buyer
         </a>
         <p class="uppercase text-lg">or</p>
-        <a href="{{ route('register_eo') }}"
+        <a href="{{ route('eo.register') }}"
           class="border-2 border-black font-semibold text-lg px-6 py-2 hover:bg-black hover:text-white transition-all duration-200">
           Register as Event Organizer
         </a>

@@ -20,7 +20,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('ticket-buyer.register');
+        return view('ticket-buyer.auth.register');
     }
 
     /**
@@ -28,7 +28,7 @@ class RegisteredUserController extends Controller
      */
     public function create_eo(): View
     {
-        return view('event-organizer.register');
+        return view('event-organizer.auth.register');
     }
 
     /**

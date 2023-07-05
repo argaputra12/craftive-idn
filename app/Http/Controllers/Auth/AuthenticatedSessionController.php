@@ -13,11 +13,19 @@ use Illuminate\View\View;
 class AuthenticatedSessionController extends Controller
 {
     /**
-     * Display the login view.
+     * Display the login view for ticket buyer.
      */
     public function create(): View
     {
-        return view('auth.login');
+        return view('ticket-buyer.auth.login');
+    }
+
+    /**
+     * Display the login view.
+     */
+    public function create_eo(): View
+    {
+        return view('event-organizer.auth.login');
     }
 
     /**
