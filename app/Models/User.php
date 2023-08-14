@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -51,15 +52,6 @@ class User extends Authenticatable
     public function ticketBuyer()
     {
         return $this->hasOne(TicketBuyer::class);
-    }
-
-    /**
-     * Get the event organizer associated with the user.
-     */
-
-    public function eventOrganizer()
-    {
-        return $this->hasOne(EventOrganizer::class);
     }
 
     /**

@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Event;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +18,12 @@ class EventCategoryFactory extends Factory
      */
     public function definition(): array
     {
+        $events = Event::factory()->count(5)->create();
+        $categories = Category::factory()->count(5)->create();
+
         return [
-            //
+            'event_id' => $events->random()->id,
+            'category_id' => $categories->random()->id,
         ];
     }
 }
