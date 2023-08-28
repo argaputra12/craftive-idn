@@ -11,6 +11,10 @@ class EventController extends Controller
     public function index(String $id)
     {
         $event = Event::find($id);
+
+        return view('events.index', [
+            'event' => $event,
+        ]);
     }
 
 }

@@ -6,7 +6,7 @@
       @csrf
 
       <div class="font-bold text-2xl text-center mb-8 text-primary-purple">
-        Login as Ticket Buyer
+        Login Existing Account
       </div>
 
       <!-- Email Address -->
@@ -46,13 +46,13 @@
         <div class="flex items-center gap-2 text-gray-600">
             <a class="underline text-sm hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               href="{{ route('register') }}">
-              {{ __('Dont have an account') }}
+              {{ __('Dont have an account?') }}
             </a>
-            <p>or</p>
+            {{-- <p>or</p>
             <a class="underline text-sm hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               href="{{ route('eo.login') }}">
               {{ __('Login as EO?') }}
-            </a>
+            </a> --}}
         </div>
         <button class="inline-flex items-center px-4 py-2 bg-primary-purple border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-secondary-purple focus:bg-primary-purple hover:text-primary-purple focus:outline-none focus:ring-2 focus:ring-primary-purple focus:ring-offset-2 transition ease-in-out duration-150">
             Login

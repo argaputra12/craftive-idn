@@ -15,6 +15,7 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
                 poppins: ['Poppins', ...defaultTheme.fontFamily.sans],
+                heebo: ['Heebo', ...defaultTheme.fontFamily.sans],
             },
             colors: {
                 primary: {
