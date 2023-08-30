@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BillController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +24,7 @@ Route::prefix('events')->group(function () {
 });
 
 Route::prefix('checkout')->group(function () {
-    Route::get('/{id}', [EventController::class, 'checkoutIndex'])->name('checkout.index');
-    Route::post('/{id}', [EventController::class, 'checkoutCreate'])->name('checkout.create');
+    Route::get('/{id}', [BillController::class, 'index'])->name('checkout.index');
 });
 
 // Route::get('/dashboard', function () {

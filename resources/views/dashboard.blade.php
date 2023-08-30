@@ -15,29 +15,34 @@
   </section>
 
   <!-- Kategoti -->
-  <section class="py-10 bg-gray-50 mb-10">
+  <section id="categories-container" class="py-10 bg-gray-50 mb-10">
     <div class="max-w-screen-xl mx-auto">
       <div class="flex flex-col gap-4">
         <h3 class="font-semibold text-2xl font-heebo">Kategori</h3>
-        <div class="w-full flex gap-2 justify-between">
+        <div id="categories" class="w-full flex gap-2 justify-between">
           <x-landing-page.category>
             <i class="fa-solid fa-globe fa-lg"></i>
+            <input type="hidden" name="category" value="Semua Kategori">
             <p>Semua Kategori</p>
-          </x-landing-page.category>
-          <x-landing-page.category>
+        </x-landing-page.category>
+        <x-landing-page.category>
             <i class="fa-solid fa-music fa-lg"></i>
-            <p>Festival musik</p>
-          </x-landing-page.category>
-          <x-landing-page.category>
+            <input type="hidden" name="category" value="Musik">
+            <p>Festival Musik</p>
+        </x-landing-page.category>
+        <x-landing-page.category>
             <i class="fa-solid fa-palette fa-lg"></i>
-            <p>Kreasi seni</p>
-          </x-landing-page.category>
-          <x-landing-page.category>
+            <input type="hidden" name="category" value="Seni">
+            <p>Seni dan Budaya</p>
+        </x-landing-page.category>
+        <x-landing-page.category>
             <i class="fa-solid fa-gamepad fa-lg"></i>
-            <p>Permainan dan hiburan</p>
-          </x-landing-page.category>
-          <x-landing-page.category>
+            <input type="hidden" name="category" value="Permainan">
+            <p>Permainan dan Hiburan</p>
+        </x-landing-page.category>
+        <x-landing-page.category>
             <i class="fa-solid fa-person-running fa-lg"></i>
+            <input type="hidden" name="category" value="Olahraga">
             <p>Olahraga</p>
           </x-landing-page.category>
         </div>
@@ -49,101 +54,46 @@
   <div class="max-w-screen-xl mx-auto">
 
     <!-- Event -->
-    <section class="flex flex-col gap-4 mb-16">
+    <section id="events-container" class="flex flex-col gap-4 mb-16">
       <h3 class="font-heebo font-semibold text-3xl">Event di Surakarta</h3>
-      <div class="flex gap-6 flex-wrap justify-between">
-        <x-landing-page.event-card>
-          <x-slot:image>
-            <a href="#">
-              <img class="rounded-t-lg overflow-hidden object-cover" src="{{ asset('storage/images/bali-arts.jpg') }}"
-                alt="" />
-            </a>
-          </x-slot:image>
-          <x-slot:title>
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology
-                acquisitions 2021</h5>
-            </a>
-          </x-slot:title>
-          <x-slot:date>
-            23 September 2021
-          </x-slot:date>
-          <x-slot:location>
-            Balai Kartini, Jakarta Selatan
-          </x-slot:location>
-          <x-slot:price>
-            Free
-          </x-slot:price>
-        </x-landing-page.event-card>
-        <x-landing-page.event-card>
-          <x-slot:image>
-            <a href="#">
-              <img class="rounded-t-lg overflow-hidden object-cover" src="{{ asset('storage/images/bali-arts.jpg') }}"
-                alt="" />
-            </a>
-          </x-slot:image>
-          <x-slot:title>
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology
-                acquisitions 2021</h5>
-            </a>
-          </x-slot:title>
-          <x-slot:date>
-            23 September 2021
-          </x-slot:date>
-          <x-slot:location>
-            Balai Kartini, Jakarta Selatan
-          </x-slot:location>
-          <x-slot:price>
-            Free
-          </x-slot:price>
-        </x-landing-page.event-card>
-        <x-landing-page.event-card>
-          <x-slot:image>
-            <a href="#">
-              <img class="rounded-t-lg overflow-hidden object-cover" src="{{ asset('storage/images/bali-arts.jpg') }}"
-                alt="" />
-            </a>
-          </x-slot:image>
-          <x-slot:title>
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology
-                acquisitions 2021</h5>
-            </a>
-          </x-slot:title>
-          <x-slot:date>
-            23 September 2021
-          </x-slot:date>
-          <x-slot:location>
-            Balai Kartini, Jakarta Selatan
-          </x-slot:location>
-          <x-slot:price>
-            Free
-          </x-slot:price>
-        </x-landing-page.event-card>
-        <x-landing-page.event-card>
-          <x-slot:image>
-            <a href="#">
-              <img class="rounded-t-lg overflow-hidden object-cover" src="{{ asset('storage/images/bali-arts.jpg') }}"
-                alt="" />
-            </a>
-          </x-slot:image>
-          <x-slot:title>
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology
-                acquisitions 2021</h5>
-            </a>
-          </x-slot:title>
-          <x-slot:date>
-            23 September 2021
-          </x-slot:date>
-          <x-slot:location>
-            Balai Kartini, Jakarta Selatan
-          </x-slot:location>
-          <x-slot:price>
-            Free
-          </x-slot:price>
-        </x-landing-page.event-card>
+      <div id="events" class="flex gap-6 flex-wrap justify-start">
+        @foreach ($events as $e)
+          <x-landing-page.event-card>
+            <x-slot:image>
+              <a href="{{ route('events.index', ['id' => $e->id]) }}">
+                <img class="rounded-t-lg overflow-hidden object-cover" src="{{ asset('storage/images/bali-arts.jpg') }}"
+                  alt="" />
+              </a>
+            </x-slot:image>
+            <x-slot:title>
+              <a href="{{ route('events.index', ['id' => $e->id]) }}">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  {{ $e->name }}
+                </h5>
+              </a>
+            </x-slot:title>
+            <x-slot:date>
+              <p class="text-sm">{{ \Carbon\Carbon::parse($e->date)->format('l, d F Y') }}</p>
+              <p class="text-sm">{{ \Carbon\Carbon::parse($e->date)->format('h:i A') }}</p>
+            </x-slot:date>
+            <x-slot:location>
+              <span class="capitalize text-sm">{{ $e->location }}, {{ $e->city }}, {{ $e->province }}</span>
+            </x-slot:location>
+            <x-slot:price>
+              @foreach ($e->tickets as $ticket)
+                <span class="font-light text-black text-sm">Mulai dari</span>
+                @if ($ticket->price == 0)
+                  Gratis
+                @else
+                  Rp. {{ $ticket->price }}
+                @endif
+              @endforeach
+            </x-slot:price>
+          </x-landing-page.event-card>
+        @endforeach
+        <div class="w-full">
+          {{ $events->links() }}
+        </div>
       </div>
     </section>
 
@@ -158,8 +108,9 @@
             <img src="{{ asset('storage/images/keraton.jpg') }}"
               class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 opacity-50"
               alt="...">
-              <div class="absolute text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-semibold font-mono text-5xl">
-                Keraton Surakarta
+            <div
+              class="absolute text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-semibold font-mono text-5xl">
+              Keraton Surakarta
             </div>
           </div>
           <!-- Item 1 -->
@@ -167,8 +118,9 @@
             <img src="{{ asset('storage/images/mangkunegaran.jpg') }}"
               class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 opacity-50"
               alt="...">
-              <div class="absolute text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-semibold font-mono text-5xl">
-                Pura Mangkunegaran
+            <div
+              class="absolute text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-semibold font-mono text-5xl">
+              Pura Mangkunegaran
             </div>
           </div>
           <!-- Item 1 -->
@@ -176,8 +128,9 @@
             <img src="{{ asset('storage/images/De-Tjolomadoe.jpg') }}"
               class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 opacity-50"
               alt="...">
-              <div class="absolute text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-semibold font-mono text-5xl">
-                De'Tjolomadoe
+            <div
+              class="absolute text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-semibold font-mono text-5xl">
+              De'Tjolomadoe
             </div>
           </div>
           <!-- Item 1 -->
@@ -185,8 +138,9 @@
             <img src="{{ asset('storage/images/tumurun.jpg') }}"
               class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 opacity-50"
               alt="...">
-              <div class="absolute text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-semibold font-mono text-5xl">
-                Tumurun Private Museum
+            <div
+              class="absolute text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-semibold font-mono text-5xl">
+              Tumurun Private Museum
             </div>
           </div>
           <!-- Item 1 -->
@@ -194,11 +148,11 @@
             <img src="{{ asset('storage/images/sriwedari.webp') }}"
               class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 opacity-50"
               alt="...">
-              <div class="absolute text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-semibold font-mono text-5xl">
-                Taman Sriwedari
+            <div
+              class="absolute text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-semibold font-mono text-5xl">
+              Taman Sriwedari
             </div>
           </div>
-
 
         </div>
         <!-- Slider controls -->
@@ -232,5 +186,19 @@
     </section>
   </div>
 
-
 </x-app-layout>
+
+<script>
+//   const filterEvent = (category) => {
+//     const events = document.getElementById('events')
+
+//     // fetch data then render view with data
+//     fetch(`/?category=${category}`)
+//       .then(response => response.json())
+//       .then(data => {
+//         events.innerHTML = ``
+//         console.log(data)
+//       });
+
+//   }
+</script>

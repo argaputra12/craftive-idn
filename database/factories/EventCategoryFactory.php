@@ -19,7 +19,7 @@ class EventCategoryFactory extends Factory
     public function definition(): array
     {
         $events = Event::factory()->count(5)->create();
-        $categories = Category::factory()->count(5)->create();
+        $categories = Category::all();
 
         return [
             'event_id' => $events->random()->id,

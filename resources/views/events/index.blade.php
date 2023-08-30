@@ -42,40 +42,47 @@
       </div>
       <div class="flex justify-between gap-4">
         <div class="w-3/5 flex flex-col gap-2 px-3">
-          <div class="font-semibold text-gray-500">
-            Senin, 20 September 2021
+          <div class="font-semibold">
+            {{ \Carbon\Carbon::parse($event->date)->format('l, d F Y') }}
           </div>
           <div class="font-bold font-heebo text-5xl mb-6">
-            Festival Musik Java Jazz
+            {{ $event->name }}
           </div>
           <div class="">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur mollitia eius sed, facilis nihil repellat deleniti eaque eveniet, itaque rem atque delectus error omnis, quasi accusantium eligendi a veritatis unde.
+            {{ $event->description }}
           </div>
           <div class="flex flex-col gap-3 my-6">
             <h2 class="font-bold text-2xl">Tanggal dan Waktu</h2>
             <div class="flex gap-3 items-center px-1">
-                <i class="fa-regular fa-calendar fa-lg"></i>
-                <p>Senin, 20 September 2021 20:00 WIB</p>
+              <i class="fa-regular fa-calendar fa-lg"></i>
+              <p>{{ \Carbon\Carbon::parse($event->date)->format('l, d F Y') }}
+                {{ \Carbon\Carbon::parse($event->date)->format('h:i A') }} WIB</p>
             </div>
           </div>
           <div class="flex flex-col gap-3 my-6">
             <h2 class="font-bold text-2xl">Lokasi</h2>
             <div class="flex gap-3 items-center px-1">
-                <i class="fa-solid fa-location-crosshairs fa-lg"></i>
-                <p>Balai Kartini, Jakarta</p>
+              <i class="fa-solid fa-location-crosshairs fa-lg"></i>
+              <p class="capitalize">{{ $event->location }}, {{ $event->city }}, {{ $event->province }}</p>
             </div>
           </div>
         </div>
         <div class="flex flex-col w-1/3 gap-4">
-          <div class=" border-primary-purple border-4 rounded-xl flex flex-col gap-2 py-3 px-5">
-            <h5 class="font-bold text-xl mb-5">Pesan Tiket Sekarang!</h5>
-            <h2 class="font-bold text-2xl">Festival Musik Java Jazz</h2>
-            <h5 class="font-semibold text-gray-500 mb-5">Senin, 20 September 2021</h5>
-            <h6>
-              <span class="font-bold text-gray-500">Harga Tiket:</span> Rp. 100.000
-            </h6>
-          </div>
-          <button class="h-10 bg-orange-500 hover:bg-primary-orange rounded-lg text-white font-bold transition-colors duration-300">Beli Tiket</button>
+          @foreach ($tickets as $ticket)
+            <form action="{{ route('checkout.index', ['id' => $ticket->id]) }}">
+              <div class=" border-primary-purple border-4 rounded-xl flex flex-col gap-2 py-3 px-5">
+                <h5 class="font-bold text-xl mb-5">Pesan Tiket Sekarang!</h5>
+                <h2 class="font-bold text-2xl">{{ $event->name }}</h2>
+                <h5 class="font-semibold text-gray-500 mb-5">{{ \Carbon\Carbon::parse($event->date)->format('l, d F Y') }}</h5>
+                <h6>
+                  <span class="font-bold">Harga Tiket:</span> Rp. {{ $ticket->price }}
+                </h6>
+              </div>
+              <button
+                class="w-full mt-3 h-10 bg-orange-500 hover:bg-primary-orange rounded-lg text-white font-bold transition-colors duration-300">Beli
+                Tiket</button>
+            </form>
+          @endforeach
 
         </div>
       </div>

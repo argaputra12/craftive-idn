@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Event;
+use App\Models\Ticket;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class TicketSeeder extends Seeder
 {
@@ -12,6 +14,12 @@ class TicketSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $events = Event::all();
+
+        foreach ($events as $event) {
+            Ticket::factory()->create([
+                'event_id' => $event->id,
+            ]);
+        }
     }
 }
