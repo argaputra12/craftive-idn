@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Ticket;
+use Faker\Provider\ar_EG\Payment;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,6 +26,8 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             EventCategorySeeder::class,
             TicketSeeder::class,
+            PaymentMethodSeeder::class,
+            AdminSeeder::class,
         ]);
     }
 }

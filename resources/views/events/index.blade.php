@@ -71,7 +71,6 @@
           @foreach ($tickets as $ticket)
             <form action="{{ route('checkout.index', ['id' => $ticket->id]) }}">
               <div class=" border-primary-purple border-4 rounded-xl flex flex-col gap-2 py-3 px-5">
-                <h5 class="font-bold text-xl mb-5">Pesan Tiket Sekarang!</h5>
                 <h2 class="font-bold text-2xl">{{ $event->name }}</h2>
                 <h5 class="font-semibold text-gray-500 mb-5">{{ \Carbon\Carbon::parse($event->date)->format('l, d F Y') }}</h5>
                 <h6>

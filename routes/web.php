@@ -25,6 +25,7 @@ Route::prefix('events')->group(function () {
 
 Route::prefix('checkout')->group(function () {
     Route::get('/{id}', [BillController::class, 'index'])->name('checkout.index');
+    Route::post('/{id}', [BillController::class, 'store'])->name('checkout.store');
 });
 
 // Route::get('/dashboard', function () {

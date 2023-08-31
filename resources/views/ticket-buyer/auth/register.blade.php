@@ -22,6 +22,20 @@
         </div>
       </div>
 
+      <!-- Phone Number -->
+        <div class="mt-4">
+            <label for="phone_number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone
+            Number</label>
+            <div class="relative">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+                <i class="fa-solid fa-phone fa-sm text-gray-500"></i>
+            </div>
+            <input type="text" id="phone_number" name="phone_number"
+                class="bg-purple-50 border border-secondary-purple text-gray-900 text-sm rounded-lg focus:ring-primary-purple focus:border-primary-purple block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-purple dark:focus:border-primary-purple"
+                placeholder="081234567890">
+            </div>
+        </div>
+
       <!-- Email Address -->
       <div class="mt-4">
         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
