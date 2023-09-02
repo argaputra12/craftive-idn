@@ -2,7 +2,7 @@
 
  @section('content')
    <div class="bg-white rounded-3xl shadow-xl flex justify-between items-center max-w-5xl">
-     <form method="POST" action="{{ route('register') }}" class=" px-16 w-1/2">
+     <form method="POST" action="{{ route('login') }}" class=" px-16 w-1/2">
        @csrf
 
        <div class="font-bold text-2xl text-center mb-8 text-primary-purple">

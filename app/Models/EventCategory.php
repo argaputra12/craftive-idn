@@ -14,4 +14,14 @@ class EventCategory extends Model
         'event_id',
         'category_id'
     ];
+
+    public function events()
+    {
+        return $this->belongsTo(Event::class);
+    }
+
+    public function categories()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

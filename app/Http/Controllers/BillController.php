@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Ticket;
 use App\Models\Event;
+use App\Models\Bill;
 use App\Http\Controllers\Controller;
 use App\Models\PaymentMethod;
 
@@ -34,6 +35,15 @@ class BillController extends Controller
     {
         dd($request->all());
 
-        
+
+    }
+
+    public function admin()
+    {
+        $bills = Bill::all();
+
+        return view('admin.bills', [
+            'bills' => $bills
+        ]);
     }
 }

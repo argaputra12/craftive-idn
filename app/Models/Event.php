@@ -20,7 +20,7 @@ class Event extends Model
     ];
 
     // relationships
-    public function ticket()
+    public function tickets()
     {
         return $this->hasMany(Ticket::class);
     }
