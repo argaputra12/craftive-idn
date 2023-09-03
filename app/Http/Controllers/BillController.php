@@ -14,7 +14,7 @@ class BillController extends Controller
     public function index(String $id)
     {
         $ticket = Ticket::findOrFail($id);
-        $event = Event::whereHas('ticket', function ($query) use ($id) {
+        $event = Event::whereHas('tickets', function ($query) use ($id) {
             $query->where('id', $id);
         })->firstOrFail();
 

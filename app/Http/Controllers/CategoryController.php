@@ -18,4 +18,23 @@ class CategoryController extends Controller
             ]
         );
     }
+
+    public function create()
+    {
+        return view('admin.categories.create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255|unique:categories',
+            'fa-class' => 'required|string|max:255|unique:categories'
+        ]);
+
+        Category::create([
+            'name' => $request->name
+        ]);
+
+        return redirect()->route('admin.categories')->with('success', 'Kategori berhasil ditambahkan');
+    }
 }

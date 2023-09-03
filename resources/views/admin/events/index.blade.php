@@ -2,7 +2,16 @@
 
 @section('content')
   <div class="flex flex-col gap-4 w-full">
+    @if (session('success'))
+      <div class="bg-green-500 p-4 rounded-lg mb-6 text-white text-center">
+        {{ session('success') }}
+      </div>
+    @endif
     <h1 class="font-semibold text-2xl font-heebo">Events</h1>
+    <div class="flex flex-row justify-end gap-4">
+      <a href="{{ route('admin.events.create') }}"
+        class="px-4 py-2 text-white bg-purple-600 rounded-md hover:bg-purple-700">Tambah Event</a>
+    </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

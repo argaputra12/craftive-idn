@@ -19,7 +19,7 @@ class DashboardController extends Controller
         if($request->category && $request->category != 'Semua Kategori') {
             return $this->filter($request);
         }
-        $events = Event::whereHas('ticket')->paginate(8);
+        $events = Event::whereHas('tickets')->paginate(8);
         foreach ($events as $event) {
             $tickets = Ticket::where('event_id', $event->id)->orderBy('price', 'asc')->get();
             $event->tickets = $tickets;

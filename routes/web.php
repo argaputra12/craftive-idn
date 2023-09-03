@@ -35,14 +35,29 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::prefix('events')->group(function() {
         Route::get('/', [EventController::class, 'admin'])->name('admin.events');
+        Route::get('/create', [EventController::class, 'create'])->name('admin.events.create');
+        Route::post('/', [EventController::class, 'store'])->name('admin.events.store');
+        Route::get('/{id}/edit', [EventController::class, 'edit'])->name('admin.events.edit');
+        Route::patch('/{id}', [EventController::class, 'update'])->name('admin.events.update');
+        Route::delete('/{id}', [EventController::class, 'destroy'])->name('admin.events.destroy');
     });
 
     Route::prefix('tickets')->group(function () {
         Route::get('/', [TicketController::class, 'admin'])->name('admin.tickets');
+        Route::get('/create', [TicketController::class, 'create'])->name('admin.tickets.create');
+        Route::post('/', [TicketController::class, 'store'])->name('admin.tickets.store');
+        Route::get('/{id}/edit', [TicketController::class, 'edit'])->name('admin.tickets.edit');
+        Route::patch('/{id}', [TicketController::class, 'update'])->name('admin.tickets.update');
+        Route::delete('/{id}', [TicketController::class, 'destroy'])->name('admin.tickets.destroy');
     });
 
     Route::prefix('categories')->group(function() {
         Route::get('/', [CategoryController::class, 'admin'])->name('admin.categories');
+        Route::get('/create', [CategoryController::class, 'create'])->name('admin.categories.create');
+        Route::post('/', [CategoryController::class, 'store'])->name('admin.categories.store');
+        Route::get('/{id}/edit', [CategoryController::class, 'edit'])->name('admin.categories.edit');
+        Route::patch('/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
+        Route::delete('/{id}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
     });
 
     Route::prefix('bills')->group(function() {
