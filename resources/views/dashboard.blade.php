@@ -24,23 +24,23 @@
             <i class="fa-solid fa-globe fa-lg"></i>
             <input type="hidden" name="category" value="Semua Kategori">
             <p>Semua Kategori</p>
-        </x-landing-page.category>
-        <x-landing-page.category>
+          </x-landing-page.category>
+          <x-landing-page.category>
             <i class="fa-solid fa-music fa-lg"></i>
             <input type="hidden" name="category" value="Musik">
             <p>Festival Musik</p>
-        </x-landing-page.category>
-        <x-landing-page.category>
+          </x-landing-page.category>
+          <x-landing-page.category>
             <i class="fa-solid fa-palette fa-lg"></i>
             <input type="hidden" name="category" value="Seni">
             <p>Seni dan Budaya</p>
-        </x-landing-page.category>
-        <x-landing-page.category>
+          </x-landing-page.category>
+          <x-landing-page.category>
             <i class="fa-solid fa-gamepad fa-lg"></i>
             <input type="hidden" name="category" value="Permainan">
             <p>Permainan dan Hiburan</p>
-        </x-landing-page.category>
-        <x-landing-page.category>
+          </x-landing-page.category>
+          <x-landing-page.category>
             <i class="fa-solid fa-person-running fa-lg"></i>
             <input type="hidden" name="category" value="Olahraga">
             <p>Olahraga</p>
@@ -85,7 +85,7 @@
                 @if ($ticket->price == 0)
                   Gratis
                 @else
-                  Rp. {{ $ticket->price }}
+                  {{ Helper::convertCurrency($ticket->price) }}
                 @endif
               @endforeach
             </x-slot:price>
@@ -189,16 +189,16 @@
 </x-app-layout>
 
 <script>
-//   const filterEvent = (category) => {
-//     const events = document.getElementById('events')
+  //   const filterEvent = (category) => {
+  //     const events = document.getElementById('events')
 
-//     // fetch data then render view with data
-//     fetch(`/?category=${category}`)
-//       .then(response => response.json())
-//       .then(data => {
-//         events.innerHTML = ``
-//         console.log(data)
-//       });
+  //     // fetch data then render view with data
+  //     fetch(`/?category=${category}`)
+  //       .then(response => response.json())
+  //       .then(data => {
+  //         events.innerHTML = ``
+  //         console.log(data)
+  //       });
 
-//   }
+  //   }
 </script>

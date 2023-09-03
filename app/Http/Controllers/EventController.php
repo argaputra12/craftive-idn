@@ -16,6 +16,7 @@ class EventController extends Controller
         $event = Event::find($id);
         $tickets = Ticket::where('event_id', $id)->get();
 
+
         return view('events.index', [
             'event' => $event,
             'tickets' => $tickets
@@ -27,12 +28,11 @@ class EventController extends Controller
         // get EventCategory with Events (order by id event)
         $events = Event::whereHas('eventCategory')->with('eventCategory')->orderBy('created_at', 'desc')->paginate(10);
 
-        foreach($events as $event) {
-            foreach($event->eventCategory as $eventCategory) {
+        foreach ($events as $event) {
+            foreach ($event->eventCategory as $eventCategory) {
                 $category = Category::where('id', $eventCategory->category_id)->first();
 
                 $eventCategory->category_name = $category->name;
-
             }
         }
 
@@ -71,7 +71,7 @@ class EventController extends Controller
             'province' => $request->province,
         ]);
 
-        foreach($request->categories as $category) {
+        foreach ($request->categories as $category) {
             EventCategory::create([
                 'event_id' => $event->id,
                 'category_id' => $category
