@@ -1,19 +1,19 @@
 <div
-  class="max-w-[23%] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:drop-shadow-xl transition-all duration-300">
+  class="max-w-[23%] rounded-lg border border-gray-200 bg-white shadow transition-all duration-300 hover:drop-shadow-xl dark:border-gray-700 dark:bg-gray-800">
   <div>
     {{ $image }}
   </div>
-  <div class="p-5 flex flex-col gap-1">
+  <div class="flex flex-col gap-1 p-5">
     <div>
       {{ $title }}
     </div>
-    <p class="font-semibold text-sm text-primary-purple">
+    <p class="text-sm font-semibold text-primary-purple">
       {{ $date }}
     </p>
-    <p class="text-gray-500 text-base">
+    <p class="text-base text-gray-500">
       {{ $location }}
     </p>
-    <p class="text-gray-600 text-base mt-2 font-semibold">
+    <p class="mt-2 text-base font-semibold text-gray-600">
       {{ $price }}
     </p>
   </div>

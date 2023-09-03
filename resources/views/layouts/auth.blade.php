@@ -22,8 +22,8 @@
   <script src="https://kit.fontawesome.com/0b736e1e36.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="font-sans text-gray-900 antialiased bg-primary-background">
-  <div class="flex flex-wrap items-center justify-center mx-auto min-h-screen">
+<body class="bg-primary-background font-sans text-gray-900 antialiased">
+  <div class="mx-auto flex min-h-screen flex-wrap items-center justify-center">
     @yield('content')
   </div>
 

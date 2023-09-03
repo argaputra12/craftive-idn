@@ -22,9 +22,9 @@
   <script src="https://kit.fontawesome.com/0b736e1e36.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="font-sans text-gray-900 antialiased bg-white">
- @include('components.navbar')
-  <div class="flex flex-wrap items-center justify-between mx-auto">
+<body class="bg-white font-sans text-gray-900 antialiased">
+  @include('components.navbar')
+  <div class="mx-auto flex flex-wrap items-center justify-between">
     {{ $slot }}
   </div>
 
