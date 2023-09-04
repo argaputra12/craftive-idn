@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Ticket;
 use App\Models\Event;
 use App\Models\TicketBuyer;
+use Carbon\Carbon;
 use Xendit\Xendit;
 use Illuminate\Support\Str;
 
@@ -60,12 +61,16 @@ class OrderController extends Controller
 
         $ticket = Ticket::findOrFail($request->ticket_id);
 
-
         $totalPrice = $ticket->price * $request->quantity;
 
         $event = Event::whereHas('tickets', function ($query) use ($request) {
             $query->where('id', $request->ticket_id);
         })->firstOrFail();
+
+        // check if ticket is still available
+        if ($ticket->stock < $request->quantity) {
+            return redirect()->back()->with('error', 'Tiket yang tersedia hanya ' . $ticket->stock);
+        }
 
         $xenditPayload = [
             'external_id' => Str::uuid(),
@@ -73,10 +78,11 @@ class OrderController extends Controller
             'description' => 'Pembelian tiket ' . $event->name,
             'amount' => $totalPrice,
             'should_send_email' => true,
+            'success_redirect_url' => route('order.index'),
+            'invoice_duration' => 3600,
         ];
 
-        $createInvoice = \Xendit\Invoice::create($xenditPayload);
-
+        $invoice = \Xendit\Invoice::create($xenditPayload);
 
         $ticketBuyer = TicketBuyer::create([
             'user_id' => auth()->user()->id,
@@ -92,11 +98,53 @@ class OrderController extends Controller
             'quantity' => $request->quantity,
             'price' => $ticket->price,
             'total_price' => $totalPrice,
-            'invoice_url' => $createInvoice['invoice_url'],
-            'external_id' => $createInvoice['external_id'],
+            'invoice_url' => $invoice['invoice_url'],
+            'external_id' => $invoice['external_id'],
         ]);
 
-        return redirect()->away($createInvoice['invoice_url']);
+        // reduce stock
+        $ticket->decrement('stock', $request->quantity);
+
+        return redirect()->away($invoice['invoice_url']);
+    }
+
+    public function webhook(Request $request)
+    {
+        $headers = $request->headers->all();
+        // if has header x-callback-token
+        if (!isset($headers['x-callback-token'])) {
+            return response()->json([
+                'message' => 'invalid token',
+            ], 401);
+        }
+
+        $callbackToken = $headers['x-callback-token'][0];
+        // check if x-callback-token is valid
+        if ($callbackToken != env('XENDIT_WEBHOOK_VERIFICATION_TOKEN')) {
+            return response()->json([
+                'message' => 'invalid token',
+            ], 401);
+        }
+
+        $decodedRequest = json_decode(request()->getContent(), true);
+
+        $xenditInvoiceId = $decodedRequest['id'];
+
+        $xenditInvoice = \Xendit\Invoice::retrieve($xenditInvoiceId);
+
+        $order = Order::where('external_id', $xenditInvoice['external_id'])->firstOrFail();
+
+        // use carbon
+        $paidAt = Carbon::parse($xenditInvoice['paid_at']);
+
+        $order->update([
+            'status' => $xenditInvoice['status'] == 'SETTLED' ? 'paid' : 'pending',
+            'paid_at' => $paidAt,
+        ]);
+
+        return response()->json([
+            'message' => 'success',
+        ]);
     }
 
     /**
