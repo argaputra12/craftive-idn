@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('quantity');
             $table->unsignedBigInteger('price');
             $table->unsignedBigInteger('total_price');
-            $table->enum('status', ['pending', 'paid', 'canceled'])->default('pending');
+            $table->enum('status', ['pending', 'paid', 'expired'])->default('pending');
             $table->string('invoice_url');
             $table->string('external_id');
             $table->timestamp('paid_at')->nullable(true);

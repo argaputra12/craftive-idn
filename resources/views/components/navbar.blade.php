@@ -20,20 +20,25 @@
           <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
             class="flex items-center space-x-2 font-semibold text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-white dark:focus:ring-white"
             type="button">
-            Hello, Arga
+            Hello, {{ Auth::user()->name }}
             <i class="fa-solid fa-chevron-down ml-4 text-gray-400"></i>
           </button>
           <!-- Dropdown menu -->
           <div id="dropdown"
             class="z-10 hidden w-44 divide-y divide-gray-100 rounded-lg bg-white shadow dark:bg-gray-700">
             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-
               <li>
-                <form method="POST" action="{{ route('logout') }}"
+                <a href="{{ route('orders.index') }}"
                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                  @csrf
-                  <button>Sign Out</button>
-                </form>
+                  Order
+                </a>
+              </li>
+              <li>
+                <a href="{{ route('logout') }}"
+                  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                  Sign Out
+                </a>
+
               </li>
             </ul>
           </div>

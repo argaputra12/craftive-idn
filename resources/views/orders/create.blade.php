@@ -1,7 +1,7 @@
 <x-app-layout>
   <div x-data="{ ticketCount: 1, ticketPrice: {{ $ticket->price }} }" class="mx-auto flex min-h-screen max-w-screen-xl flex-col-reverse gap-6 p-6 sm:flex-row">
     <section class="">
-      <form action="{{ route('order.store') }}" method="POST">
+      <form action="{{ route('orders.store') }}" method="POST">
         @csrf
         <input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
         <div class="flex flex-col gap-6">

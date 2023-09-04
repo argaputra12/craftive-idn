@@ -15,4 +15,15 @@ class Ticket extends Model
         'stock',
         'price',
     ];
+
+    // relationships
+    public function event()
+    {
+        return $this->belongsTo(Event::class);
+    }
+
+    public function order()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

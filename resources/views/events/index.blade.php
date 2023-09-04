@@ -70,7 +70,7 @@
         </div>
         <div class="flex w-1/3 flex-col gap-4">
           @foreach ($tickets as $ticket)
-            <form action="{{ route('order.create', ['id' => $ticket->id]) }}">
+            <form action="{{ route('orders.create', ['id' => $ticket->id]) }}">
               <div class="flex flex-col gap-2 rounded-xl border-4 border-primary-purple px-5 py-3">
                 <h2 class="text-2xl font-bold">{{ $event->name }}</h2>
                 <h5 class="mb-5 font-semibold text-gray-500">

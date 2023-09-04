@@ -24,7 +24,16 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('order.index');
+        $userId = auth()->user()->id;
+
+        $orders = Order::where('user_id', $userId)
+            ->with('ticket.event')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('orders.index', [
+            'orders' => $orders,
+        ]);
     }
 
     /**
@@ -40,7 +49,7 @@ class OrderController extends Controller
         $ticket->event = $event;
 
 
-        return view('order.create', [
+        return view('orders.create', [
             'ticket' => $ticket,
         ]);
     }
@@ -78,7 +87,7 @@ class OrderController extends Controller
             'description' => 'Pembelian tiket ' . $event->name,
             'amount' => $totalPrice,
             'should_send_email' => true,
-            'success_redirect_url' => route('order.index'),
+            'success_redirect_url' => route('orders.index'),
             'invoice_duration' => 3600,
         ];
 

@@ -20,7 +20,7 @@ class TicketBuyer extends Model
     // relationships
     public function order()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasOne(Order::class);
     }
 
     public function user()

@@ -31,10 +31,10 @@ Route::prefix('checkout')->middleware('auth')->group(function () {
     Route::post('/{id}', [BillController::class, 'store'])->name('checkout.store');
 });
 
-Route::prefix('order')->middleware('auth')->group(function () {
-    Route::get('/', [OrderController::class, 'index'])->name('order.index');
-    Route::get('/{id}', [OrderController::class, 'create'])->name('order.create');
-    Route::post('/', [OrderController::class, 'store'])->name('order.store');
+Route::prefix('orders')->middleware('auth')->group(function () {
+    Route::get('/', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/{id}', [OrderController::class, 'create'])->name('orders.create');
+    Route::post('/', [OrderController::class, 'store'])->name('orders.store');
 });
 
 

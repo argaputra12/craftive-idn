@@ -20,7 +20,7 @@
 </head>
 
 <body class="font-sans antialiased">
-  <div class="min-h-screen bg-white">
+  <div class="flex min-h-screen flex-col bg-white">
     @include('components.navbar')
 
     <!-- Page Heading -->
@@ -33,7 +33,7 @@
     @endif
 
     <!-- Page Content -->
-    <main>
+    <main class="flex-grow">
       {{ $slot }}
     </main>
 

@@ -21,4 +21,14 @@ class Order extends Model
         'external_id',
         'paid_at',
     ];
+
+    public function ticket()
+    {
+        return $this->belongsTo(Ticket::class);
+    }
+
+    public function ticketBuyer()
+    {
+        return $this->belongsTo(TicketBuyer::class);
+    }
 }

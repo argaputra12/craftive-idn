@@ -20,4 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/payments/xendit', [OrderController::class, 'webhook'])->name('order.webhook');
+Route::post('/payments/xendit', [OrderController::class, 'webhook'])->name('orders.webhook');
