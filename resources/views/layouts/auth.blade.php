@@ -26,6 +26,7 @@
   <div class="mx-auto flex min-h-screen flex-wrap items-center justify-center">
     @yield('content')
   </div>
+  @include('sweetalert::alert')
 
 </body>
 

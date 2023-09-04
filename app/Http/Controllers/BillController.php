@@ -8,11 +8,17 @@ use App\Models\Event;
 use App\Models\Bill;
 use App\Http\Controllers\Controller;
 use App\Models\PaymentMethod;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BillController extends Controller
 {
-    public function index(String $id)
+    public function index(String $id, Request $request)
     {
+        // if user not logged in, redirect to login page
+        if (!$request->session()->has('user')) {
+            return redirect('login')->withToastError('Kamu harus login terlebih dahulu untuk melanjutkan pembayaran!');
+        }
+
         $ticket = Ticket::findOrFail($id);
         $event = Event::whereHas('tickets', function ($query) use ($id) {
             $query->where('id', $id);
@@ -34,8 +40,6 @@ class BillController extends Controller
     public function store(Request $request)
     {
         dd($request->all());
-
-
     }
 
     public function admin()
