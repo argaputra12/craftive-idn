@@ -1,11 +1,9 @@
 <x-app-layout>
-  <div x-data="{ ticketCount: 20, ticketPrice: {{ $ticket->price }} }" class="mx-auto flex min-h-screen max-w-screen-xl flex-col-reverse gap-6 p-6 sm:flex-row">
+  <div x-data="{ ticketCount: 1, ticketPrice: {{ $ticket->price }} }" class="mx-auto flex min-h-screen max-w-screen-xl flex-col-reverse gap-6 p-6 sm:flex-row">
     <section class="">
-      <form>
+      <form action="{{ route('order.store') }}" method="POST">
+        @csrf
         <input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
-        @auth
-          <input type="hidden" name="ticket_buyer_id" value="{{ Auth::user()->ticketBuyer->id }}">
-        @endauth
         <div class="flex flex-col gap-6">
           <div class="flex flex-col gap-2">
             <h2 class="font-heebo text-2xl font-semibold">Informasi Kontak</h2>
@@ -17,7 +15,7 @@
                 <label for="email" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
                   Alamat Email
                 </label>
-                <input type="email" id="email"
+                <input type="email" id="email" name="email"
                   class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                   placeholder="john.doe@company.com" required @auth value="{{ Auth::user()->email }}" @endauth>
               </div>
@@ -25,7 +23,7 @@
                 <label for="full_name" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
                   Nama Lengkap
                 </label>
-                <input type="text" id="full_name"
+                <input type="text" id="full_name" name="full_name"
                   class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                   placeholder="John" required @auth value="{{ Auth::user()->name }}" @endauth>
               </div>
@@ -33,10 +31,17 @@
                 <label for="phone" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
                   Nomor Telepon
                 </label>
-                <input type="tel" id="phone"
+                <input type="tel" id="phone" name="phone"
                   class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                  placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-                  @auth value="{{ Auth::user()->ticketBuyer->phone_number }}" @endauth required>
+                  placeholder="081234567890" @auth value="{{ Auth::user()->phone_number }}" @endauth required>
+              </div>
+              <div>
+                <label for="nik" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+                  NIK
+                </label>
+                <input type="nik" id="nik" name="nik"
+                  class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                  placeholder="3116060312020012" required>
               </div>
             </div>
           </div>
@@ -50,9 +55,9 @@
                 <label for="tiket" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
                   Tiket
                 </label>
-                <input type="number" id="tiket" x-model="ticketCount"
+                <input type="number" id="tiket" x-model="ticketCount" name="quantity"
                   class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                  placeholder="1" required min="1">
+                  placeholder="1" required min="1" max="{{ $ticket->stock }}">
               </div>
 
             </div>
@@ -70,15 +75,16 @@
                     <span>x </span>
                     <span x-text="ticketCount"></span>
                   </p>
-                  <p class="font-semibold">{{ Helper::convertCurrency($ticket->price) }}</p>
-                  <input type="hidden" name="price" value="{{ $ticket->price }}">
+                  <p class="font-semibold"
+                    x-text="(ticketCount * ticketPrice).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })">
+                  </p>
                 </div>
-                <div name="divider" class="my-3 h-0.5 w-full bg-gray-200"></div>
+                <div name="divider" class="my-3 h-0.5 w-full bg-gray-200">
+                </div>
                 <div class="flex justify-between font-semibold">
                   <p>Total Pembayaran</p>
                   <span
                     x-text="(ticketCount * ticketPrice).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })"></span>
-                  <input type="hidden" name="unique_code" value="{{ $ticket->price }}">
                 </div>
                 <button type="submit"
                   class="h-10 w-full rounded-lg bg-orange-500 font-bold text-white transition-colors duration-300 hover:bg-primary-orange">Lanjutkan
@@ -89,10 +95,6 @@
           </div>
         </div>
       </form>
-
-      {{-- @foreach ($payment_method as $p)
-        <option value="{{ $p->id }}">{{ $p->name }}</option>
-      @endforeach --}}
 
     </section>
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,15 +26,22 @@ Route::prefix('events')->group(function () {
     Route::get('/{id}', [EventController::class, 'index'])->name('events.index');
 });
 
-Route::prefix('checkout')->group(function () {
+Route::prefix('checkout')->middleware('auth')->group(function () {
     Route::get('/{id}', [BillController::class, 'index'])->name('checkout.index');
     Route::post('/{id}', [BillController::class, 'store'])->name('checkout.store');
 });
 
+Route::prefix('order')->middleware('auth')->group(function () {
+    Route::get('/', [OrderController::class, 'index'])->name('order.index');
+    Route::get('/{id}', [OrderController::class, 'create'])->name('order.create');
+    Route::post('/', [OrderController::class, 'store'])->name('order.store');
+});
+
+
 Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/', [DashboardController::class, 'admin'])->name('admin.dashboard');
 
-    Route::prefix('events')->group(function() {
+    Route::prefix('events')->group(function () {
         Route::get('/', [EventController::class, 'admin'])->name('admin.events');
         Route::get('/create', [EventController::class, 'create'])->name('admin.events.create');
         Route::post('/', [EventController::class, 'store'])->name('admin.events.store');
@@ -51,7 +59,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
         Route::delete('/{id}', [TicketController::class, 'destroy'])->name('admin.tickets.destroy');
     });
 
-    Route::prefix('categories')->group(function() {
+    Route::prefix('categories')->group(function () {
         Route::get('/', [CategoryController::class, 'admin'])->name('admin.categories');
         Route::get('/create', [CategoryController::class, 'create'])->name('admin.categories.create');
         Route::post('/', [CategoryController::class, 'store'])->name('admin.categories.store');
@@ -60,10 +68,9 @@ Route::prefix('admin')->middleware('admin')->group(function () {
         Route::delete('/{id}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
     });
 
-    Route::prefix('bills')->group(function() {
+    Route::prefix('bills')->group(function () {
         Route::get('/', [BillController::class, 'admin'])->name('admin.bills');
     });
-
 });
 
 Route::middleware('auth')->group(function () {
@@ -76,4 +83,4 @@ Route::middleware('auth')->group(function () {
 
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

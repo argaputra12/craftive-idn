@@ -14,24 +14,24 @@ class BillController extends Controller
 {
     public function index(String $id, Request $request)
     {
-        // if user not logged in, redirect to login page
-        if (!Auth::user()) {
-            return redirect('login')->withToastError('Kamu harus login terlebih dahulu untuk melanjutkan pembayaran!');
-        }
+        // // if user not logged in, redirect to login page
+        // if (!Auth::user()) {
+        //     return redirect('login')->withToastError('Kamu harus login terlebih dahulu untuk melanjutkan pembayaran!');
+        // }
 
-        $ticket = Ticket::findOrFail($id);
-        $event = Event::whereHas('tickets', function ($query) use ($id) {
-            $query->where('id', $id);
-        })->firstOrFail();
+        // $ticket = Ticket::findOrFail($id);
+        // $event = Event::whereHas('tickets', function ($query) use ($id) {
+        //     $query->where('id', $id);
+        // })->firstOrFail();
 
-        $ticket->event = $event;
+        // $ticket->event = $event;
 
-        $payment_method = PaymentMethod::all();
+        // $payment_method = PaymentMethod::all();
 
-        return view('checkout.index', [
-            'ticket' => $ticket,
-            'payment_method' => $payment_method,
-        ]);
+        // return view('order.index', [
+        //     'ticket' => $ticket,
+        //     'payment_method' => $payment_method,
+        // ]);
     }
 
     public function store(Request $request)

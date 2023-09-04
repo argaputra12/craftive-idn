@@ -14,13 +14,13 @@ class TicketBuyer extends Model
         'user_id',
         'name',
         'phone_number',
-        'city',
+        'nik',
     ];
 
     // relationships
-    public function bill()
+    public function order()
     {
-        return $this->hasMany(Bill::class);
+        return $this->hasMany(Order::class);
     }
 
     public function user()
