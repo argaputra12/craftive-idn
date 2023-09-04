@@ -1,89 +1,92 @@
 <x-app-layout>
-  <div class="mx-auto min-h-screen max-w-screen-xl p-6">
-    <section class="flex flex-col items-center">
-      <h1 class="font-heebo text-2xl font-semibold">CHECKOUT TICKET</h1>
-      <div class="flex flex-col items-center sm:flex-row sm:items-start sm:gap-2">
-        <h2>{{ $ticket->event->name }}</h2>
-        <h2 class="hidden sm:block">•</h2>
-        <h2>{{ \Carbon\Carbon::parse($ticket->event->date)->format('l, d F Y') }}</h2>
-      </div>
-    </section>
-
-    <section class="my-8">
-
+  <div x-data="{ ticketCount: 20, ticketPrice: {{ $ticket->price }} }" class="mx-auto flex min-h-screen max-w-screen-xl flex-col-reverse gap-6 p-6 sm:flex-row">
+    <section class="">
       <form>
         <input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
         @auth
           <input type="hidden" name="ticket_buyer_id" value="{{ Auth::user()->ticketBuyer->id }}">
         @endauth
-        <div class="flex flex-col gap-2">
-          <h2 class="font-heebo text-2xl font-semibold">Informasi Kontak</h2>
-          <h3 class="font-heebo font-medium opacity-60">
-            Masukkan informasi kontak anda untuk memudahkan kami menghubungi anda jika terjadi masalah.
-          </h3>
-          <div class="flex flex-col gap-6 rounded-lg border border-gray-200 bg-white px-6 py-8 shadow">
-            <div>
-              <label for="email" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
-                Alamat Email
-              </label>
-              <input type="email" id="email"
-                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                placeholder="john.doe@company.com" required @auth value="{{ Auth::user()->email }}" @endauth>
-            </div>
-            <div>
-              <label for="full_name" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
-                Nama Lengkap
-              </label>
-              <input type="text" id="full_name"
-                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                placeholder="John" required @auth value="{{ Auth::user()->name }}" @endauth>
-            </div>
-            <div>
-              <label for="phone" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
-                Nomor Telepon
-              </label>
-              <input type="tel" id="phone"
-                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-                @auth value="{{ Auth::user()->ticketBuyer->phone_number }}" @endauth required>
+        <div class="flex flex-col gap-6">
+          <div class="flex flex-col gap-2">
+            <h2 class="font-heebo text-2xl font-semibold">Informasi Kontak</h2>
+            <h3 class="font-heebo font-medium opacity-60">
+              Masukkan informasi kontak anda untuk memudahkan kami menghubungi anda jika terjadi masalah.
+            </h3>
+            <div class="flex flex-col gap-6 rounded-lg border border-gray-200 bg-white px-6 py-8 shadow">
+              <div>
+                <label for="email" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+                  Alamat Email
+                </label>
+                <input type="email" id="email"
+                  class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                  placeholder="john.doe@company.com" required @auth value="{{ Auth::user()->email }}" @endauth>
+              </div>
+              <div>
+                <label for="full_name" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+                  Nama Lengkap
+                </label>
+                <input type="text" id="full_name"
+                  class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                  placeholder="John" required @auth value="{{ Auth::user()->name }}" @endauth>
+              </div>
+              <div>
+                <label for="phone" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+                  Nomor Telepon
+                </label>
+                <input type="tel" id="phone"
+                  class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                  placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                  @auth value="{{ Auth::user()->ticketBuyer->phone_number }}" @endauth required>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="flex flex-col gap-2">
-          <h2 class="font-heebo text-2xl font-semibold">Rincian Pembelian</h2>
-          <h3 class="font-heebo font-medium opacity-60">
-            Rincian pembelian tiket anda.
-          </h3>
-          <div class="flex flex-col gap-6 rounded-lg border border-gray-200 bg-white px-6 py-8 text-lg shadow">
-            <div class="flex flex-col gap-2">
-              <div class="flex justify-between text-sm">
-                <p>{{ $ticket->event->name }}</p>
-                <p class="font-semibold">{{ Helper::convertCurrency($ticket->price) }}</p>
-                <input type="hidden" name="price" value="{{ $ticket->price }}">
+          <div class="flex flex-col gap-2">
+            <h2 class="font-heebo text-2xl font-semibold">Jumlah Tiket</h2>
+            <h3 class="font-heebo font-medium opacity-60">
+              Masukkan jumlah tiket yang ingin anda beli.
+            </h3>
+            <div class="flex flex-col gap-6 rounded-lg border border-gray-200 bg-white px-6 py-8 shadow">
+              <div>
+                <label for="tiket" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+                  Tiket
+                </label>
+                <input type="number" id="tiket" x-model="ticketCount"
+                  class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                  placeholder="1" required min="1">
               </div>
-              <div class="flex justify-between text-sm">
-                <p>Kode Unik</p>
-                <p class="font-semibold">{{ Helper::convertCurrency($kode_unik) }}</p>
-                <input type="hidden" name="unique_code" value="{{ $kode_unik }}">
-              </div>
-              <div class="my-3 h-0.5 w-full bg-gray-200"></div>
-              <div class="flex justify-between font-semibold">
-                <p>Total</p>
-                <p>{{ Helper::convertCurrency($ticket->price + $kode_unik) }}</p>
-                <input type="hidden" name="unique_code" value="{{ $ticket->price + $kode_unik }}">
-              </div>
-              <button type="submit"
-                class="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto">Lanjutkan
-                Pembayaran
-              </button>
+
             </div>
           </div>
-        </div>
-
-      </form>
-
-      <form action="">
-        <div class="mb-4 flex flex-col gap-1">
+          <div class="flex flex-col gap-2">
+            <h2 class="font-heebo text-2xl font-semibold">Rincian Pembelian</h2>
+            <h3 class="font-heebo font-medium opacity-60">
+              Rincian pembelian tiket anda.
+            </h3>
+            <div class="flex flex-col gap-6 rounded-lg border border-gray-200 bg-white px-6 py-8 text-lg shadow">
+              <div class="flex flex-col gap-2">
+                <div class="flex justify-between text-sm">
+                  <p class="flex-1">{{ $ticket->event->name }} </p>
+                  <p class="flex-[0.3_0.3_0%]">
+                    <span>x </span>
+                    <span x-text="ticketCount"></span>
+                  </p>
+                  <p class="font-semibold">{{ Helper::convertCurrency($ticket->price) }}</p>
+                  <input type="hidden" name="price" value="{{ $ticket->price }}">
+                </div>
+                <div name="divider" class="my-3 h-0.5 w-full bg-gray-200"></div>
+                <div class="flex justify-between font-semibold">
+                  <p>Total Pembayaran</p>
+                  <span
+                    x-text="(ticketCount * ticketPrice).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })"></span>
+                  <input type="hidden" name="unique_code" value="{{ $ticket->price }}">
+                </div>
+                <button type="submit"
+                  class="h-10 w-full rounded-lg bg-orange-500 font-bold text-white transition-colors duration-300 hover:bg-primary-orange">Lanjutkan
+                  Pembayaran
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </form>
 
@@ -91,6 +94,27 @@
         <option value="{{ $p->id }}">{{ $p->name }}</option>
       @endforeach --}}
 
+    </section>
+
+    <section class="">
+      <div
+        class="flex w-full min-w-[20rem] flex-col items-start gap-2 rounded-xl border-4 border-primary-purple px-6 py-8">
+        <h4 class="text-2xl font-bold">{{ $ticket->event->name }}</h4>
+        <div name="divider" class="my-3 h-0.5 w-full bg-gray-200"></div>
+        <h4 class="text-lg font-semibold text-gray-600">
+          <span x-text="ticketCount"></span> <span> Tiket</span>
+        </h4>
+        <div name="divider" class="my-3 h-0.5 w-full bg-gray-200"></div>
+        <h4 class="text-lg text-gray-500">Tanggal Dipilih</h4>
+        <h4 class="font-semibold text-gray-600">
+          {{ \Carbon\Carbon::parse($ticket->event->date)->translatedFormat('l, d F Y') }}</h4>
+        <div name="divider" class="my-3 h-0.5 w-full bg-gray-200"></div>
+        <div class="flex w-full place-content-between">
+          <p class="font-bold">Total Pembayaran:</p>
+          <p x-text="(ticketCount * ticketPrice).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })"></p>
+        </div>
+        </h6>
+      </div>
     </section>
   </div>
 </x-app-layout>

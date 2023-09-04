@@ -58,12 +58,10 @@
       <h3 class="font-heebo text-3xl font-semibold">Event di Surakarta</h3>
       <div id="events" class="flex flex-wrap justify-start gap-6">
         @foreach ($events as $e)
-          <x-landing-page.event-card>
+          <x-landing-page.event-card :id="$e->id">
             <x-slot:image>
-              <a href="{{ route('events.index', ['id' => $e->id]) }}">
-                <img class="overflow-hidden rounded-t-lg object-cover" src="{{ asset('storage/images/bali-arts.jpg') }}"
-                  alt="" />
-              </a>
+              <img class="overflow-hidden rounded-t-lg object-cover" src="{{ asset('storage/images/bali-arts.jpg') }}"
+                alt="" />
             </x-slot:image>
             <x-slot:title>
               <a href="{{ route('events.index', ['id' => $e->id]) }}">
