@@ -22,14 +22,20 @@ class OrderController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        // get status from query string
+        $status = $request->query('status');
+
         $userId = auth()->user()->id;
 
         $orders = Order::where('user_id', $userId)
+            ->when($status, function ($query, $status) {
+                return $query->where('status', $status);
+            })
             ->with('ticket.event')
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(8);
 
         return view('orders.index', [
             'orders' => $orders,
@@ -88,6 +94,7 @@ class OrderController extends Controller
             'amount' => $totalPrice,
             'should_send_email' => true,
             'success_redirect_url' => route('orders.index'),
+            'failure_redirect_url' => route('orders.index'),
             'invoice_duration' => 3600,
         ];
 
@@ -117,6 +124,44 @@ class OrderController extends Controller
         return redirect()->away($invoice['invoice_url']);
     }
 
+
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(String $orderId)
+    {
+        $order = Order::findOrFail($orderId);
+
+        return view('orders.show', [
+            'order' => $order,
+        ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Order $order)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Order $order)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Order $order)
+    {
+        //
+    }
+
     public function webhook(Request $request)
     {
         $headers = $request->headers->all();
@@ -144,47 +189,24 @@ class OrderController extends Controller
         $order = Order::where('external_id', $xenditInvoice['external_id'])->firstOrFail();
 
         // use carbon
-        $paidAt = Carbon::parse($xenditInvoice['paid_at']);
 
-        $order->update([
-            'status' => $xenditInvoice['status'] == 'SETTLED' ? 'paid' : 'pending',
-            'paid_at' => $paidAt,
-        ]);
+        $status = $xenditInvoice['status'];
+
+        if ($status == 'EXPIRED') {
+            $order->update([
+                'status' => 'expired',
+            ]);
+        } else {
+            $paidAt = Carbon::parse($xenditInvoice['paid_at']);
+            $order->update([
+                'status' => $xenditInvoice['status'] == 'SETTLED' ? 'paid' : 'pending',
+                'paid_at' => $paidAt,
+            ]);
+        }
+
 
         return response()->json([
             'message' => 'success',
         ]);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Order $order)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Order $order)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Order $order)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Order $order)
-    {
-        //
     }
 }

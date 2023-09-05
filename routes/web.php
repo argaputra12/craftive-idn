@@ -33,7 +33,8 @@ Route::prefix('checkout')->middleware('auth')->group(function () {
 
 Route::prefix('orders')->middleware('auth')->group(function () {
     Route::get('/', [OrderController::class, 'index'])->name('orders.index');
-    Route::get('/{id}', [OrderController::class, 'create'])->name('orders.create');
+    Route::get('/{id}', [OrderController::class, 'show'])->name('orders.show');
+    Route::get('/create/{id}', [OrderController::class, 'create'])->name('orders.create');
     Route::post('/', [OrderController::class, 'store'])->name('orders.store');
 });
 

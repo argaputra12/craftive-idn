@@ -20,7 +20,7 @@ export default {
       colors: {
         primary: {
           purple: "#6F41A8",
-          yellow: "#EAEF78",
+            yellow: "#EAEF78",
           green: "#A8E0B2",
           orange: "#FF914D",
           background: "#F4F4F4",
