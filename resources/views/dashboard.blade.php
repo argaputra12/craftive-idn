@@ -5,9 +5,9 @@
     <div class="mx-auto max-w-screen-xl px-4 py-24 text-center lg:py-56">
       <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-white md:text-5xl lg:text-6xl">Create
         Creative Crafts</h1>
-      <p class="mb-8 text-lg font-normal text-gray-300 sm:px-16 lg:px-48 lg:text-xl">Lorem ipsum dolor, sit amet
-        consectetur adipisicing elit. Similique, suscipit iure corrupti ipsa tempora alias. Magnam perspiciatis
-        voluptatibus inventore illo adipisci quod, provident quo eveniet facilis hic iusto sapiente explicabo.</p>
+      <p class="mb-8 text-lg font-normal text-gray-300 sm:px-16 lg:px-48 lg:text-xl">
+        Create Creative Crafts is a platform for you to buy tickets for various events in Indonesia.
+      </p>
       <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-x-4 sm:space-y-0">
 
       </div>
