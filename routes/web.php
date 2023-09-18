@@ -69,8 +69,9 @@ Route::prefix('admin')->middleware('admin')->group(function () {
         Route::delete('/{id}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
     });
 
-    Route::prefix('bills')->group(function () {
-        Route::get('/', [BillController::class, 'admin'])->name('admin.bills');
+    Route::prefix('orders')->group(function () {
+        Route::get('/', [OrderController::class, 'admin'])->name('admin.orders');
+        Route::get('/create', [OrderController::class, 'adminCreate'])->name('admin.orders.create');
     });
 });
 

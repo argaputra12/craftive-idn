@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class TicketBuyerSeeder extends Seeder
 {
@@ -12,6 +13,11 @@ class TicketBuyerSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        User::factory()->create([
+          'name' => 'user',
+          'email' => 'userr@user.com',
+          'password' => bcrypt('password'),
+          'role' => 'ticket-buyer',
+        ]);
     }
 }

@@ -38,7 +38,7 @@ class DashboardController extends Controller
         $eventCategories = EventCategory::where('category_id', $category->id)->get();
 
         // paginate all event where in eventCategories
-        $events = Event::whereHas('ticket')->whereIn('id', $eventCategories->pluck('event_id'))->paginate(8);
+        $events = Event::whereHas('tickets')->whereIn('id', $eventCategories->pluck('event_id'))->paginate(8);
 
         foreach ($events as $event) {
             $tickets = Ticket::where('event_id', $event->id)->orderBy('price', 'asc')->get();

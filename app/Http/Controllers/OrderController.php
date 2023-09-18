@@ -209,4 +209,16 @@ class OrderController extends Controller
             'message' => 'success',
         ]);
     }
+
+    public function admin()
+    {
+      $orders = Order::orderBy('created_at', 'desc')->paginate(8);
+
+      return view('admin.orders.index', compact('orders'));
+    }
+
+    public function adminCreate()
+    {
+
+    }
 }
