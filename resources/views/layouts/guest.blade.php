@@ -8,6 +8,9 @@
 
   <title>{{ config('app.name', 'Craftive') }}</title>
 
+  <!-- Icon -->
+  <link rel="icon" href="{{ asset('storage/images/Logo.png') }}" type="image/png" />
+
   <!-- Favicons -->
   <link rel="craftive logo" href="{{ asset('storage/images/Logo.png') }}" type="imagge/svg">
 
@@ -31,3 +34,4 @@
 </body>
 
 </html>
+
