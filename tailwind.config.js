@@ -30,6 +30,9 @@ export default {
           yellow: "#FAFCD7",
         },
       },
+      listStyleImage: {
+        triangle: "url('/storage/app/public/images/triangle-list.png')",
+      },
     },
   },
 
