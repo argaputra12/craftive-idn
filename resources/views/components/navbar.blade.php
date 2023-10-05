@@ -1,37 +1,26 @@
-{{-- <style>
-  .navigation:hover i {
-    color: #563085;
-  }
-
-  .navigation:hover p {
-    color: #FF914D;
-    font-weight: 600;
-  }
-</style> --}}
-
 <nav class="z-50 shadow-md">
-  <div class="flex h-28 items-center justify-between gap-5 px-16 py-5">
+  <div class="flex h-24 items-center justify-between gap-5 px-16">
     <a href="{{ route('dashboard') }}" class="flex items-center">
-      <img src="{{ asset('storage/images/Logo.png') }}" class="h-16" alt="Craftive Logo" />
+      <img src="{{ asset('storage/images/Logo.png') }}" class="h-16 w-16" alt="Craftive Logo" />
     </a>
-    <div class="flex items-center justify-center gap-6">
-      <a href="{{ route('dashboard') }}" class="group flex p-4 justify-center items-center gap-3 font-poppins text-lg w-36">
+    <div class="flex items-center justify-center">
+      <a href="{{ route('dashboard') }}" class="group flex p-4 justify-center items-center gap-3 font-poppins text-xl w-36">
         <i class="fa-solid fa-caret-right group-hover:text-primary-purple text-transparent transition-all duration-300"></i>
         <p class="group-hover:text-primary-orange transition-all duration-300 group-hover:font-semibold">Home</p>
       </a>
-      <a href="" class="group flex p-4 justify-center items-center gap-3 font-poppins text-lg w-36">
+      <a href="" class="group flex p-4 justify-center items-center gap-3 font-poppins text-xl w-36">
         <i class="fa-solid fa-caret-right group-hover:text-primary-purple text-transparent transition-all duration-300"></i>
         <p class="group-hover:text-primary-orange transition-all duration-300 group-hover:font-semibold">Event</p>
       </a>
-      <a href="" class="group flex p-4 justify-center items-center gap-3 font-poppins text-lg w-36">
+      <a href="" class="group flex p-4 justify-center items-center gap-3 font-poppins text-xl w-36">
         <i class="fa-solid fa-caret-right group-hover:text-primary-purple text-transparent transition-all duration-300"></i>
         <p class="group-hover:text-primary-orange transition-all duration-300 group-hover:font-semibold">About Us</p>
       </a>
-      <a href="" class="group flex p-4 justify-center items-center gap-3 font-poppins text-lg w-36">
+      <a href="" class="group flex p-4 justify-center items-center gap-3 font-poppins text-xl w-36">
         <i class="fa-solid fa-caret-right group-hover:text-primary-purple text-transparent transition-all duration-300"></i>
         <p class="group-hover:text-primary-orange transition-all duration-300 group-hover:font-semibold">News</p>
       </a>
-      <a href="" class="group flex p-4 justify-center items-center gap-3 font-poppins text-lg w-36">
+      <a href="" class="group flex p-4 justify-center items-center gap-3 font-poppins text-xl w-36">
         <i class="fa-solid fa-caret-right group-hover:text-primary-purple text-transparent transition-all duration-300"></i>
         <p class="group-hover:text-primary-orange transition-all duration-300 group-hover:font-semibold">Gallery</p>
       </a>
@@ -63,20 +52,3 @@
     </button>
   </div>
 </nav>
-
-{{-- <script>
-  const navigationLink = document.querySelectorAll('.navigation');
-
-  // add class when navigation link is hovered
-  navigationLink.forEach(link => {
-    link.addEventListener('mouseover', () => {
-      link.querySelector('i').classList.remove('text-transparent');
-      link.querySelector('i').classList.add('text-primary-purple');
-    });
-    link.addEventListener('mouseout', () => {
-      link.querySelector('i').classList.remove('text-primary-purple');
-      link.querySelector('i').classList.add('text-transparent');
-    });
-  });
-</script> --}}
-

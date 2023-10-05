@@ -41,37 +41,8 @@
     </main>
 
     <!-- Footer -->
-    <footer class="w-full bg-gray-900">
-      <div class="mx-auto max-w-screen-xl px-4 sm:px-6">
-        <div class="py-12 md:flex md:items-center md:justify-between">
-          <div class="flex justify-center space-x-6 text-white md:order-2">
-            <a href="#" class="text-gray-400 hover:text-gray-300">
-              <span class="sr-only">Facebook</span>
-              <i class="fa-brands fa-facebook-f fa-lg"></i>
-            </a>
-            <a href="#" class="text-gray-400 hover:text-gray-300">
-              <span class="sr-only">Twitter</span>
-              <i class="fa-brands fa-twitter fa-lg"></i>
-            </a>
-            <a href="#" class="text-gray-400 hover:text-gray-300">
-              <span class="sr-only">Instagram</span>
-              <i class="fa-brands fa-instagram fa-lg"></i>
-            </a>
-            <a href="#" class="text-gray-400 hover:text-gray-300">
-              <span class="sr-only">Whatsapp</span>
-              <i class="fa-brands fa-whatsapp fa-lg"></i>
-            </a>
-
-          </div>
-
-          <div class="mt-8 md:order-1 md:mt-0">
-            <p class="text-center text-base text-gray-400">
-              &copy; 2023 Craftive.id
-            </p>
-          </div>
-        </div>
-      </div>
-    </footer>
+    @include('components.footer')
+    
   </div>
 </body>
 

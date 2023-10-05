@@ -2,16 +2,8 @@
   <!-- Jumbotron -->
   <section
     class="bg-gray-700 bg-[url('https://images.pexels.com/photos/4348401/pexels-photo-4348401.jpeg')] bg-center bg-no-repeat bg-blend-multiply">
-    <div class="mx-auto max-w-screen-xl px-4 py-24 text-center lg:py-56">
-      <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-white md:text-5xl lg:text-6xl">Create
-        Creative Crafts</h1>
-      <p class="mb-8 text-lg font-normal text-gray-300 sm:px-16 lg:px-48 lg:text-xl">
-        Create Creative Crafts is a platform for you to buy tickets for various events in Indonesia.
-      </p>
-      <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-x-4 sm:space-y-0">
+    
 
-      </div>
-    </div>
   </section>
 
   <!-- Kategoti -->
