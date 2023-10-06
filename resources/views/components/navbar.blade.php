@@ -1,26 +1,26 @@
-<nav class="z-50 shadow-md">
+<nav class="z-50 shadow-md bg-white">
   <div class="flex h-24 items-center justify-between gap-5 px-16">
     <a href="{{ route('dashboard') }}" class="flex items-center">
       <img src="{{ asset('storage/images/Logo.png') }}" class="h-16 w-16" alt="Craftive Logo" />
     </a>
     <div class="flex items-center justify-center">
-      <a href="{{ route('dashboard') }}" class="group flex p-4 justify-center items-center gap-3 font-poppins text-xl w-36">
+      <a href="{{ route('dashboard') }}" class="group flex p-4 justify-center items-center gap-3 font-poppins w-32">
         <i class="fa-solid fa-caret-right group-hover:text-primary-purple text-transparent transition-all duration-300"></i>
         <p class="group-hover:text-primary-orange transition-all duration-300 group-hover:font-semibold">Home</p>
       </a>
-      <a href="" class="group flex p-4 justify-center items-center gap-3 font-poppins text-xl w-36">
+      <a href="" class="group flex p-4 justify-center items-center gap-3 font-poppins w-32">
         <i class="fa-solid fa-caret-right group-hover:text-primary-purple text-transparent transition-all duration-300"></i>
         <p class="group-hover:text-primary-orange transition-all duration-300 group-hover:font-semibold">Event</p>
       </a>
-      <a href="" class="group flex p-4 justify-center items-center gap-3 font-poppins text-xl w-36">
+      <a href="" class="group flex p-4 justify-center items-center gap-3 font-poppins w-32">
         <i class="fa-solid fa-caret-right group-hover:text-primary-purple text-transparent transition-all duration-300"></i>
         <p class="group-hover:text-primary-orange transition-all duration-300 group-hover:font-semibold">About Us</p>
       </a>
-      <a href="" class="group flex p-4 justify-center items-center gap-3 font-poppins text-xl w-36">
+      <a href="" class="group flex p-4 justify-center items-center gap-3 font-poppins w-32">
         <i class="fa-solid fa-caret-right group-hover:text-primary-purple text-transparent transition-all duration-300"></i>
         <p class="group-hover:text-primary-orange transition-all duration-300 group-hover:font-semibold">News</p>
       </a>
-      <a href="" class="group flex p-4 justify-center items-center gap-3 font-poppins text-xl w-36">
+      <a href="" class="group flex p-4 justify-center items-center gap-3 font-poppins w-32">
         <i class="fa-solid fa-caret-right group-hover:text-primary-purple text-transparent transition-all duration-300"></i>
         <p class="group-hover:text-primary-orange transition-all duration-300 group-hover:font-semibold">Gallery</p>
       </a>
@@ -28,13 +28,13 @@
     <div class="flex justify-end items-center gap-7">
       <a href="{{ route('login') }}">
         <button
-          class="flex h-14 w-44 items-center justify-center rounded-md bg-primary-purple font-medium text-white active:bg-[#563085]">
+          class="flex h-12 w-40 items-center justify-center rounded-md bg-primary-purple font-medium text-white active:bg-[#563085]">
           Login
         </button>
       </a>
       <a href="{{ route('register') }}">
         <button
-          class="flex h-14 w-44 items-center justify-center rounded-md border-2 border-primary-purple font-medium text-primary-purple active:bg-[#563085]">
+          class="flex h-12 w-40 items-center justify-center rounded-md border-2 border-primary-purple font-medium text-primary-purple active:bg-[#563085]">
           Register
         </button>
       </a>

@@ -13,9 +13,25 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        Category::create(['name' => 'Musik']);
-        Category::create(['name' => 'Seni']);
-        Category::create(['name' => 'Permainan']);
-        Category::create(['name' => 'Olahraga']);
+        Category::create([
+          'name' => 'Beauty',
+          'image_url' => 'storage/images/categories/beauty.jpg'
+        ]);
+        Category::create([
+          'name' => 'Flower and Planting',
+          'image_url' => 'storage/images/categories/planting.jpg'
+        ]);
+        Category::create([
+          'name' => 'Food and Beverage',
+          'image_url' => 'storage/images/categories/food.jpg'
+        ]);
+        Category::create([
+          'name' => 'Accessories',
+          'image_url' => 'storage/images/categories/accessories.jpg'
+        ]);
+        Category::create([
+          'name' => 'Culture',
+          'image_url' => 'storage/images/categories/culture.jpg'
+        ]);
     }
 }

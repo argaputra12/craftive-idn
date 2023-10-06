@@ -19,14 +19,22 @@ class DashboardController extends Controller
         if($request->category && $request->category != 'Semua Kategori') {
             return $this->filter($request);
         }
+
         $events = Event::whereHas('tickets')->paginate(8);
         foreach ($events as $event) {
             $tickets = Ticket::where('event_id', $event->id)->orderBy('price', 'asc')->get();
             $event->tickets = $tickets;
         }
 
+        $categories = Category::all();
+        $categories->prepend((object) [
+            'name' => 'Semua Kategori',
+            'image_url' => 'storage/images/bali-arts.jpg',
+        ]);
+
         return view('dashboard', [
             'events' => $events,
+            'categories' => $categories,
         ]);
     }
 
@@ -45,9 +53,15 @@ class DashboardController extends Controller
             $event->tickets = $tickets;
         }
 
-        // return $events as json
+        $categories = Category::all();
+        $categories->prepend((object) [
+            'name' => 'Semua Kategori',
+            'image_url' => 'storage/images/bali-arts.jpg',
+        ]);
+
         return view('dashboard', [
             'events' => $events,
+            'categories' => $categories,
         ]);
     }
 

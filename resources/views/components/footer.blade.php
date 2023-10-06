@@ -14,10 +14,22 @@
         Pertiwi yang mengkhususkan diri bergerak di bidang pembuatan dan distribusi aneka macam desain kitchen set
         terbaru</p>
       <div class="flex gap-5">
+        <a href="" class="rounded-lg bg-primary-orange flex justify-center items-center w-9 h-9">
+          <i class="fa-brands fa-instagram fa-xl"></i>
+        </a>
+        <a href="" class="rounded-lg bg-primary-orange flex justify-center items-center w-9 h-9">
+          <i class="fa-brands fa-whatsapp fa-xl"></i>
+        </a>
+        <a href="" class="rounded-lg bg-primary-orange flex justify-center items-center w-9 h-9">
+          <i class="fa-brands fa-youtube fa-xl"></i>
+        </a>
+        <a href="" class="rounded-lg bg-primary-orange flex justify-center items-center w-9 h-9">
+          <i class="fa-brands fa-tiktok fa-xl"></i>
+        </a>
 
       </div>
     </div>
-    <div class="flex justify-end gap-24 mx-4">
+    <div class="mx-4 flex justify-end gap-24">
       <div class="flex flex-col gap-3">
         <p class="text-lg font-semibold">General</p>
         <p class="">Ticket</p>
@@ -38,14 +50,14 @@
       </div>
       <div class="flex flex-col gap-3">
         <p class="text-lg font-semibold">Contacy Us</p>
-        <a class=" underline">+6282321442151</a>
-        <a class=" underline">craftive.id</a>
+        <a class="underline">+6282321442151</a>
+        <a class="underline">craftive.id</a>
       </div>
     </div>
   </div>
   <div class="w-full border-b border-white"></div>
   {{-- copyright --}}
-  <div class="flex w-full  gap-5">
+  <div class="flex w-full gap-5">
     <p class="text-base">© 2021 Craftive. All rights reserved.</p>
   </div>
 </footer>

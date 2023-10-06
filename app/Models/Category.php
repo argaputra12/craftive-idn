@@ -12,6 +12,7 @@ class Category extends Model
     // fillable data
     protected $fillable = [
         'name',
+        'image_url'
     ];
 
     // relationships

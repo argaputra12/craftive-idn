@@ -33,6 +33,10 @@ export default {
       listStyleImage: {
         triangle: "url('/storage/app/public/images/triangle-list.png')",
       },
+      backgroundImage: {
+        "bali-arts": "url('/storage/app/public/images/bali-arts.jpg')",
+        "planting": "url('/storage/app/public/images/planting.jpg')",
+      },
     },
   },
 

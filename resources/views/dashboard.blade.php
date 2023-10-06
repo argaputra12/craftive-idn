@@ -1,44 +1,61 @@
 <x-app-layout>
   <!-- Jumbotron -->
   <section
-    class="bg-gray-700 bg-[url('https://images.pexels.com/photos/4348401/pexels-photo-4348401.jpeg')] bg-center bg-no-repeat bg-blend-multiply">
-    
+    class="-mt-24 flex min-h-screen w-full items-center justify-between bg-gradient-to-r from-white from-[75%] to-primary-green to-[25%] pl-[70px] pr-36 pt-24">
+    <div class="flex w-3/5 flex-col gap-4">
+      <img src="{{ asset('storage/images/group.png') }}" alt="" class="h-16 w-16">
+      <h1 class="font-poppins text-[64px] font-bold text-primary-purple">We Provide Various <span
+          class="text-primary-orange underline decoration-2 underline-offset-4">Events</span> For You</h1>
+      <p class="w-4/5">No need to worry about running out of tickets or having trouble finding event information. At
+        Craftive.id,
+        everything you need is at your fingertips. Find the event you're looking forward to and order your tickets now!
+      </p>
+      <div class="flex justify-end pr-20">
+        <img src="{{ asset('storage/images/group-1.png') }}" alt="" class="h-16 w-16">
+      </div>
+    </div>
+
+    <div id="default-carousel" class="relative h-[490px] w-1/3" data-carousel="slide">
+      <!-- Carousel wrapper -->
+      <div class="relative h-full overflow-hidden rounded-lg">
+        <!-- Item 1 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+          <img src="{{ asset('storage/images/slider-1.png') }}"
+            class="absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2" alt="...">
+        </div>
+        <!-- Item 2 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+          <img src="{{ asset('storage/images/slider-2.png') }}"
+            class="absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2" alt="...">
+        </div>
+        <!-- Item 3 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+          <img src="{{ asset('storage/images/slider-3.png') }}"
+            class="absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2" alt="...">
+        </div>
+      </div>
+      <!-- Slider indicators -->
+      <div class="absolute bottom-5 left-1/2 z-30 flex -translate-x-1/2 space-x-3">
+        <button type="button" class="h-3 w-3 rounded-full" aria-current="true" aria-label="Slide 1"
+          data-carousel-slide-to="0"></button>
+        <button type="button" class="h-3 w-3 rounded-full" aria-current="false" aria-label="Slide 2"
+          data-carousel-slide-to="1"></button>
+        <button type="button" class="h-3 w-3 rounded-full" aria-current="false" aria-label="Slide 3"
+          data-carousel-slide-to="2"></button>
+      </div>
+    </div>
 
   </section>
 
-  <!-- Kategoti -->
-  <section id="categories-container" class="mb-10 bg-gray-50 py-10">
+  <!-- Kategori -->
+  <section id="categories-container" class="mb-10 bg-gray-100 py-14">
     <div class="mx-auto max-w-screen-xl">
-      <div class="flex flex-col gap-4">
-        <h3 class="font-heebo text-2xl font-semibold">Kategori</h3>
-        <div id="categories" class="flex w-full justify-between gap-2">
-          <x-landing-page.category>
-            <i class="fa-solid fa-globe fa-lg"></i>
-            <input type="hidden" name="category" value="Semua Kategori">
-            <p>Semua Kategori</p>
-          </x-landing-page.category>
-          <x-landing-page.category>
-            <i class="fa-solid fa-music fa-lg"></i>
-            <input type="hidden" name="category" value="Musik">
-            <p>Festival Musik</p>
-          </x-landing-page.category>
-          <x-landing-page.category>
-            <i class="fa-solid fa-palette fa-lg"></i>
-            <input type="hidden" name="category" value="Seni">
-            <p>Seni dan Budaya</p>
-          </x-landing-page.category>
-          <x-landing-page.category>
-            <i class="fa-solid fa-gamepad fa-lg"></i>
-            <input type="hidden" name="category" value="Permainan">
-            <p>Permainan dan Hiburan</p>
-          </x-landing-page.category>
-          <x-landing-page.category>
-            <i class="fa-solid fa-person-running fa-lg"></i>
-            <input type="hidden" name="category" value="Olahraga">
-            <p>Olahraga</p>
-          </x-landing-page.category>
+        <div id="categories" class="flex w-full justify-between gap-5">
+          @foreach ($categories as $category)
+            <x-landing-page.category image="{{ asset($category->image_url) }}" value="{{ $category->name }}">
+            </x-landing-page.category>
+          @endforeach
         </div>
-      </div>
     </div>
   </section>
 
@@ -87,94 +104,16 @@
       </div>
     </section>
 
-    <!-- Destinasi Rekomendasi -->
-    <section class="my-24 flex flex-col gap-4">
-      <h3 class="font-heebo text-3xl font-semibold">Rekomendasi Destinasi Wisata di Surakarta</h3>
-      <div id="controls-carousel" class="relative w-full" data-carousel="static">
-        <!-- Carousel wrapper -->
-        <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-          <!-- Item 1 -->
-          <div class="hidden bg-black duration-700 ease-in-out" data-carousel-item>
-            <img src="{{ asset('storage/images/keraton.jpg') }}"
-              class="absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2 opacity-50"
-              alt="...">
-            <div
-              class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform font-mono text-5xl font-semibold text-white">
-              Keraton Surakarta
-            </div>
-          </div>
-          <!-- Item 1 -->
-          <div class="hidden bg-black duration-700 ease-in-out" data-carousel-item>
-            <img src="{{ asset('storage/images/mangkunegaran.jpg') }}"
-              class="absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2 opacity-50"
-              alt="...">
-            <div
-              class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform font-mono text-5xl font-semibold text-white">
-              Pura Mangkunegaran
-            </div>
-          </div>
-          <!-- Item 1 -->
-          <div class="hidden bg-black duration-700 ease-in-out" data-carousel-item>
-            <img src="{{ asset('storage/images/De-Tjolomadoe.jpg') }}"
-              class="absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2 opacity-50"
-              alt="...">
-            <div
-              class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform font-mono text-5xl font-semibold text-white">
-              De'Tjolomadoe
-            </div>
-          </div>
-          <!-- Item 1 -->
-          <div class="hidden bg-black duration-700 ease-in-out" data-carousel-item>
-            <img src="{{ asset('storage/images/tumurun.jpg') }}"
-              class="absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2 opacity-50"
-              alt="...">
-            <div
-              class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform font-mono text-5xl font-semibold text-white">
-              Tumurun Private Museum
-            </div>
-          </div>
-          <!-- Item 1 -->
-          <div class="hidden bg-black duration-700 ease-in-out" data-carousel-item>
-            <img src="{{ asset('storage/images/sriwedari.webp') }}"
-              class="absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2 opacity-50"
-              alt="...">
-            <div
-              class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform font-mono text-5xl font-semibold text-white">
-              Taman Sriwedari
-            </div>
-          </div>
-
-        </div>
-        <!-- Slider controls -->
-        <button type="button"
-          class="group absolute left-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
-          data-carousel-prev>
-          <span
-            class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70">
-            <svg class="h-4 w-4 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-              fill="none" viewBox="0 0 6 10">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M5 1 1 5l4 4" />
-            </svg>
-            <span class="sr-only">Previous</span>
-          </span>
-        </button>
-        <button type="button"
-          class="group absolute right-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
-          data-carousel-next>
-          <span
-            class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70">
-            <svg class="h-4 w-4 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-              fill="none" viewBox="0 0 6 10">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="m1 9 4-4-4-4" />
-            </svg>
-            <span class="sr-only">Next</span>
-          </span>
-        </button>
-      </div>
-    </section>
   </div>
+  <!-- Hubungi Kami -->
+  <section class="h-72 w-full bg-planting bg-cover bg-fixed bg-center">
+    <div class="flex h-full w-full flex-col items-center justify-center gap-5 bg-black bg-opacity-40">
+      <h3 class="text-3xl font-bold text-white">Hubungi Kami Untuk Info Selengkapnya</h3>
+      <button class="rounded-md bg-white px-7 py-2 font-medium">
+        Hubungi Kami
+      </button>
+    </div>
+  </section>
 
 </x-app-layout>
 
@@ -192,3 +131,4 @@
 
   //   }
 </script>
+
