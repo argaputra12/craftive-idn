@@ -42,7 +42,7 @@
 
     <!-- Footer -->
     @include('components.footer')
-    
+
   </div>
 </body>
 

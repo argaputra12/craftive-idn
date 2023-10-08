@@ -1,4 +1,4 @@
-<footer class="flex w-full flex-col items-center justify-center gap-8 bg-primary-purple p-14 font-poppins text-white">
+<footer id="footer" class="flex w-full flex-col items-center justify-center gap-8 bg-primary-purple p-14 font-poppins text-white">
   <form class="flex flex-col items-center justify-center gap-10">
     <h2 class="text-5xl font-medium">Subscribe Newsletter</h2>
     <div class="flex w-full justify-center gap-5">

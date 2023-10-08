@@ -24,6 +24,9 @@ class DashboardController extends Controller
         foreach ($events as $event) {
             $tickets = Ticket::where('event_id', $event->id)->orderBy('price', 'asc')->get();
             $event->tickets = $tickets;
+
+            $eventCategories = EventCategory::where('event_id', $event->id)->get();
+            $event->categories = $eventCategories;
         }
 
         $categories = Category::all();

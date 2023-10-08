@@ -15,7 +15,7 @@ class TicketBuyerSeeder extends Seeder
     {
         User::factory()->create([
           'name' => 'user',
-          'email' => 'userr@user.com',
+          'email' => 'user@user.com',
           'password' => bcrypt('password'),
           'role' => 'ticket-buyer',
         ]);
