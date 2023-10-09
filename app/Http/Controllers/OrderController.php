@@ -184,13 +184,26 @@ class OrderController extends Controller
 
         $xenditInvoiceId = $decodedRequest['id'];
 
-        $xenditInvoice = \Xendit\Invoice::retrieve($xenditInvoiceId);
+        $xenditInvoice = null;
 
-        if (!$xenditInvoice) {
+        try {
+            $xenditInvoice = \Xendit\Invoice::retrieve($xenditInvoiceId);
+
+            // You can use $xenditInvoice here if it was retrieved successfully
+
+        } catch (\Xendit\Exceptions\ApiException $e) {
             return response()->json([
-                'message' => 'invoice not found',
+                'message' => $e->getMessage()
+            ], 404);
+        } catch (\Exception $e) {
+            // Handle other exceptions
+            // You can log the error or take other appropriate actions
+            return response()->json([
+                'message' => $e->getMessage()
             ], 404);
         }
+
+
 
         $order = Order::where('external_id', $xenditInvoice['external_id'])->firstOrFail();
 
