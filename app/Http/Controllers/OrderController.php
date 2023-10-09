@@ -186,6 +186,12 @@ class OrderController extends Controller
 
         $xenditInvoice = \Xendit\Invoice::retrieve($xenditInvoiceId);
 
+        if (!$xenditInvoice) {
+            return response()->json([
+                'message' => 'invoice not found',
+            ], 404);
+        }
+
         $order = Order::where('external_id', $xenditInvoice['external_id'])->firstOrFail();
 
         if (!$order) {
