@@ -200,9 +200,9 @@
                 <p class="text-[#606060]">{{ $event->description }}</p>
               </div>
               <div class="flex gap-2">
-                @foreach ($event->categories as $category)
+                @foreach ($event->eventCategory as $category)
                   <div class="rounded-md bg-primary-green px-2 py-1 text-xs text-primary-purple">
-                    {{ $category->name }}
+                    {{ $category->categories->name }}
                   </div>
                 @endforeach
               </div>
