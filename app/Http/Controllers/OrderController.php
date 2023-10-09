@@ -188,8 +188,13 @@ class OrderController extends Controller
 
         $order = Order::where('external_id', $xenditInvoice['external_id'])->firstOrFail();
 
-        // use carbon
+        if (!$order) {
+            return response()->json([
+                'message' => 'order not found',
+            ], 404);
+        }
 
+        // lower case the status
         $status = $xenditInvoice['status'];
 
         if ($status == 'EXPIRED') {
@@ -199,7 +204,7 @@ class OrderController extends Controller
         } else {
             $paidAt = Carbon::parse($xenditInvoice['paid_at']);
             $order->update([
-                'status' => $xenditInvoice['status'] == 'SETTLED' ? 'paid' : 'pending',
+                'status' => $status == 'SETTLED' || $status == 'PAID' ? 'paid' : 'pending',
                 'paid_at' => $paidAt,
             ]);
         }
@@ -212,13 +217,12 @@ class OrderController extends Controller
 
     public function admin()
     {
-      $orders = Order::orderBy('created_at', 'desc')->paginate(8);
+        $orders = Order::orderBy('created_at', 'desc')->paginate(8);
 
-      return view('admin.orders.index', compact('orders'));
+        return view('admin.orders.index', compact('orders'));
     }
 
     public function adminCreate()
     {
-
     }
 }
