@@ -131,8 +131,13 @@ class OrderController extends Controller
      */
     public function show(String $orderId)
     {
-        $order = Order::findOrFail($orderId);
-
+        $userId = auth()->user()->id;
+        $order = Order::where(
+            'id',
+            $orderId
+        )->where('user_id', $userId)
+            ->with('ticketBuyer')
+            ->with('ticket.event')->firstOrFail();
         return view('orders.show', [
             'order' => $order,
         ]);
