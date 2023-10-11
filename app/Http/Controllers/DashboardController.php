@@ -21,13 +21,6 @@ class DashboardController extends Controller
         }
 
         $events = Event::whereHas('tickets')->paginate(8);
-        // foreach ($events as $event) {
-        //     $tickets = Ticket::where('event_id', $event->id)->orderBy('price', 'asc')->get();
-        //     $event->tickets = $tickets;
-
-        //     $eventCategories = EventCategory::where('event_id', $event->id)->get();
-        //     $event->categories = $eventCategories;
-        // }
 
         $categories = Category::all();
         $categories->prepend((object) [

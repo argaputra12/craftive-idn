@@ -35,6 +35,9 @@
               Lokasi Event
             </th>
             <th scope="col" class="px-6 py-3">
+              Gambar
+            </th>
+            <th scope="col" class="px-6 py-3">
               <span class="sr-only">Edit</span>
             </th>
           </tr>
@@ -62,8 +65,16 @@
               <td class="px-6 py-4">
                 {{ $event->location }}, {{ $event->city }}, {{ $event->province }}
               </td>
-              <td class="px-6 py-4 text-right">
+              <td class="px-6 py-4">
+                <img src="{{ asset($event->image_url) }}" alt="">
+              </td>
+              <td class="flex justify-center gap-2 px-6 py-4 items-center">
                 <a href="#" class="font-medium text-blue-600 hover:underline dark:text-blue-500">Edit</a>
+                <form action="{{ route('admin.events.destroy', ['id' => $event->id]) }}" method="POST">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="font-medium text-blue-600 hover:underline">Delete</button>
+                </form>
               </td>
             </tr>
           @endforeach
@@ -73,3 +84,4 @@
     {{ $events->links() }}
   </div>
 @endsection
+

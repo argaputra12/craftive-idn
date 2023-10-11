@@ -55,8 +55,8 @@
             <h2 class="text-2xl font-bold">Tanggal dan Waktu</h2>
             <div class="flex items-center gap-3 px-1">
               <i class="fa-regular fa-calendar fa-lg"></i>
-              <p>{{ \Carbon\Carbon::parse($event->date)->format('l, d F Y') }}
-                {{ \Carbon\Carbon::parse($event->date)->format('h:i A') }} WIB</p>
+              <p>{{ date('l, d F Y', strtotime($event->date)) }},
+                {{ date('h : i A', strtotime($event->date)) }} WIB</p>
             </div>
           </div>
           <div class="my-6 flex flex-col gap-3">

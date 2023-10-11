@@ -23,6 +23,7 @@ class EventFactory extends Factory
             'location' => $this->faker->word,
             'city' => $this->faker->city(),
             'province' => $this->faker->state(),
+            'image_url' => $this->faker->imageUrl()
         ];
     }
 }

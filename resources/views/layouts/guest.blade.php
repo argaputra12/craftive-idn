@@ -11,9 +11,6 @@
   <!-- Icon -->
   <link rel="icon" href="{{ asset('storage/images/Logo.png') }}" type="image/png" />
 
-  <!-- Favicons -->
-  <link rel="craftive logo" href="{{ asset('storage/images/Logo.png') }}" type="imagge/svg">
-
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.bunny.net">
   <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />

@@ -24,6 +24,11 @@
           class="fa-solid fa-caret-right text-transparent transition-all duration-300 group-hover:text-primary-purple"></i>
         <p class="transition-all duration-300 group-hover:font-semibold group-hover:text-primary-orange">About Us</p>
       </a>
+      <a href="{{ route('orders.index') }}" class="group flex w-32 items-center justify-center gap-3 p-4 font-poppins">
+        <i
+          class="fa-solid fa-caret-right text-transparent transition-all duration-300 group-hover:text-primary-purple"></i>
+        <p class="transition-all duration-300 group-hover:font-semibold group-hover:text-primary-orange">Orders</p>
+      </a>
       {{-- <a href="" class="group flex p-4 justify-center items-center gap-3 font-poppins w-32">
         <i class="fa-solid fa-caret-right group-hover:text-primary-purple text-transparent transition-all duration-300"></i>
         <p class="group-hover:text-primary-orange transition-all duration-300 group-hover:font-semibold">Gallery</p>

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('location');
             $table->string('city');
             $table->string('province');
+            $table->string('image_url');
             $table->timestamps();
         });
     }

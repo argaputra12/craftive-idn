@@ -3,7 +3,7 @@
 @section('content')
   <div class="flex w-full flex-col gap-4">
     <h1 class="mb-6 font-heebo text-2xl font-semibold">Tambah Event</h1>
-    <form action="{{ route('admin.events.store') }}" method="POST">
+    <form action="{{ route('admin.events.store') }}" method="POST" enctype="multipart/form-data">
       @csrf
       <div class="w-1/2">
         <div class="mb-6">
@@ -76,6 +76,16 @@
           @if ($errors->has('province'))
             <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
                 class="font-medium">{{ $errors->first('province') }}{{ $errors->first('province') }}</span></p>
+          @endif
+        </div>
+        <div class="mb-6">
+          <label class="mb-2 block text-sm font-medium text-gray-900 dark:text-white" for="image">Event image</label>
+          <input
+            class="block w-full cursor-pointer rounded-lg border border-purple-300 bg-purple-50 text-sm text-purple-900 focus:outline-none dark:border-purple-600 dark:bg-purple-700 dark:text-purple-400 dark:placeholder-purple-400"
+            id="image" type="file" accept="image/*" name="image">
+          @if ($errors->has('image'))
+            <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                class="font-medium">{{ $errors->first('image') }}</span></p>
           @endif
         </div>
 

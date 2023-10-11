@@ -197,7 +197,7 @@
             <div class="flex flex-col justify-between">
               <div class="flex flex-col gap-1">
                 <p class="font-poppins text-xl font-semibold">{{ $event->name }}</p>
-                <p class="text-[#606060]">{{ $event->description }}</p>
+                <p class="text-[#606060] max-h-[72px] text-ellipsis overflow-hidden">{{ $event->description }}</p>
               </div>
               <div class="flex gap-2">
                 @foreach ($event->eventCategory as $category)
