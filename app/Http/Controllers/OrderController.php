@@ -131,8 +131,13 @@ class OrderController extends Controller
      */
     public function show(String $orderId)
     {
-        $order = Order::findOrFail($orderId);
-
+        $userId = auth()->user()->id;
+        $order = Order::where(
+            'id',
+            $orderId
+        )->where('user_id', $userId)
+            ->with('ticketBuyer')
+            ->with('ticket.event')->firstOrFail();
         return view('orders.show', [
             'order' => $order,
         ]);
@@ -184,12 +189,36 @@ class OrderController extends Controller
 
         $xenditInvoiceId = $decodedRequest['id'];
 
-        $xenditInvoice = \Xendit\Invoice::retrieve($xenditInvoiceId);
+        $xenditInvoice = null;
+
+        try {
+            $xenditInvoice = \Xendit\Invoice::retrieve($xenditInvoiceId);
+
+            // You can use $xenditInvoice here if it was retrieved successfully
+
+        } catch (\Xendit\Exceptions\ApiException $e) {
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 404);
+        } catch (\Exception $e) {
+            // Handle other exceptions
+            // You can log the error or take other appropriate actions
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 404);
+        }
+
+
 
         $order = Order::where('external_id', $xenditInvoice['external_id'])->firstOrFail();
 
-        // use carbon
+        if (!$order) {
+            return response()->json([
+                'message' => 'order not found',
+            ], 404);
+        }
 
+        // lower case the status
         $status = $xenditInvoice['status'];
 
         if ($status == 'EXPIRED') {
@@ -199,7 +228,7 @@ class OrderController extends Controller
         } else {
             $paidAt = Carbon::parse($xenditInvoice['paid_at']);
             $order->update([
-                'status' => $xenditInvoice['status'] == 'SETTLED' ? 'paid' : 'pending',
+                'status' => $status == 'SETTLED' || $status == 'PAID' ? 'paid' : 'pending',
                 'paid_at' => $paidAt,
             ]);
         }
@@ -212,13 +241,12 @@ class OrderController extends Controller
 
     public function admin()
     {
-      $orders = Order::orderBy('created_at', 'desc')->paginate(8);
+        $orders = Order::orderBy('created_at', 'desc')->paginate(8);
 
-      return view('admin.orders.index', compact('orders'));
+        return view('admin.orders.index', compact('orders'));
     }
 
     public function adminCreate()
     {
-
     }
 }
