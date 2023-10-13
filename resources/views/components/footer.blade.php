@@ -10,9 +10,7 @@
   <div class="w-full border-b border-white"></div>
   <div class="flex w-full items-start justify-between">
     <div class="flex max-w-md flex-col gap-8">
-      <p class="text-base">Perusahaan kami dulu di kenal bernama CV. Surya yang kini telah berubah menjadi PT. Surya
-        Pertiwi yang mengkhususkan diri bergerak di bidang pembuatan dan distribusi aneka macam desain kitchen set
-        terbaru</p>
+      <p class="text-base">Craftive.id adalah perusahaan rintisan baru yang bergerak sebagai ticketing platform yang mewadahi kreator - kreator dalam bidang seni dan kreatif untuk dapat membagikan ilmunya kepada masyarakat luas. Kami berdiri dan bekerjasama dengan UNS Innovation Hub.</p>
       <div class="flex gap-5">
         <a href="" class="rounded-lg bg-primary-orange flex justify-center items-center w-9 h-9">
           <i class="fa-brands fa-instagram fa-xl"></i>

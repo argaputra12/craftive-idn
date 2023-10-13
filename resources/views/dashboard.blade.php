@@ -16,9 +16,7 @@
       <img src="{{ asset('storage/images/group.png') }}" alt="" class="h-16 w-16">
       <h1 class="font-poppins text-[64px] font-bold text-primary-purple">We Provide Various <span
           class="text-primary-orange underline decoration-2 underline-offset-4">Events</span> For You</h1>
-      <p class="w-4/5">No need to worry about running out of tickets or having trouble finding event information. At
-        Craftive.id,
-        everything you need is at your fingertips. Find the event you're looking forward to and order your tickets now!
+      <p class="w-4/5">Tidak perlu bingung lagi untuk mengadakan workshop kreatif dengan biaya yang murah dan fasilitas yang lengkap. Disini kamu bisa mengeksplorasi kemampuanmu dengan bertemu bersama teman-teman yang akan berkreasi bersama!
       </p>
       <div class="flex justify-end pr-20">
         <img src="{{ asset('storage/images/group-1.png') }}" alt="" class="h-16 w-16">
@@ -106,7 +104,7 @@
     </div>
 
     <!-- Kategori -->
-    <section id="categories-container" class="py-8">
+    <section id="categories-container" class="py-8 px-14">
       <div class="mx-auto max-w-screen-xl">
         <div id="categories" class="flex w-full justify-between gap-5">
           @foreach ($categories as $category)
