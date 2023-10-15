@@ -65,7 +65,7 @@ class EventController extends Controller
     ]);
 
     $filename = $request->file('image')->getClientOriginalName();
-    $request->file('image')->storeAs('/images/events', $filename);
+    $request->file('image')->storeAs('/public/images/events', $filename);
     // dd('file uploaded');
     $filepath = 'storage/images/events/' . $filename;
 
@@ -88,6 +88,61 @@ class EventController extends Controller
     }
 
     return redirect()->route('admin.events');
+  }
+
+  public function edit(String $id)
+  {
+    $event = Event::find($id);
+    $categories = Category::orderBy('name')->get();
+
+    return view('admin.events.edit', [
+      'event' => $event,
+      'categories' => $categories
+    ]);
+  }
+
+  public function update(String $id, Request $request)
+  {
+    $validated = $request->validate([
+      'name' => 'required|string|max:255',
+      'description' => 'required|string',
+      'date' => 'required|date',
+      'location' => 'required|string|max:255',
+      'city' => 'required|string|max:255',
+      'province' => 'required|string|max:255',
+      'categories' => 'required|array',
+      'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+    ]);
+
+    $event = Event::find($id);
+
+    // udpate all fields except image
+    $event->update([
+      'name' => $request->name,
+      'description' => $request->description,
+      'date' => $request->date,
+      'location' => $request->location,
+      'city' => $request->city,
+      'province' => $request->province,
+    ]);
+
+    // if image is updated
+    if ($request->file('image')) {
+
+      // delete old image
+      $old_image = $event->image_url;
+      unlink($old_image);
+
+      $filename = $request->file('image')->getClientOriginalName();
+      $request->file('image')->storeAs('/public/images/events', $filename);
+      $filepath = 'storage/images/events/' . $filename;
+
+      $event->update([
+        'image_url' => $filepath
+      ]);
+    }
+
+    return redirect()->route('admin.events')->with('success', 'Event updated successfully');
   }
 
   public function destroy(String $id)

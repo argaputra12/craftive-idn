@@ -25,6 +25,9 @@
               Nama Event
             </th>
             <th scope="col" class="px-6 py-3">
+              Deskripsi Tiket
+            </th>
+            <th scope="col" class="px-6 py-3">
               Stok
             </th>
             <th scope="col" class="px-6 py-3">
@@ -37,22 +40,30 @@
         </thead>
         <tbody>
           @foreach ($events as $event)
-            @foreach ($event->tickets as $tickets)
+            @foreach ($event->tickets as $ticket)
               <tr class="border-b bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
                 <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white">
-                  {{ $tickets->id }}
+                  {{ $ticket->id }}
                 </th>
                 <td class="px-6 py-4">
                   {{ $event->name }}
                 </td>
                 <td class="px-6 py-4">
-                  {{ $tickets->stock }}
+                  {{ $ticket->name }}
                 </td>
                 <td class="px-6 py-4">
-                  {{ $tickets->price }}
+                  {{ $ticket->stock }}
+                </td>
+                <td class="px-6 py-4">
+                  {{ $ticket->price }}
                 </td>
                 <td class="px-6 py-4 text-right">
-                  <a href="#" class="font-medium text-blue-600 hover:underline dark:text-blue-500">Edit</a>
+                  <a href="{{ route('admin.tickets.edit', ['id' => $ticket->id]) }}" class="font-medium text-blue-600 hover:underline dark:text-blue-500">Edit</a>
+                  <form action="{{ route('admin.tickets.destroy', ['id' => $ticket->id]) }}" method="POST">
+                    @method('DELETE')
+                    @csrf
+                    <button type="submit" class="font-medium text-blue-600 hover:underline dark:text-blue-500">Delete</button>
+                  </form>
                 </td>
               </tr>
             @endforeach

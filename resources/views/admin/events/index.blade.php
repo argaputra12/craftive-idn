@@ -57,7 +57,7 @@
                 @endforeach
               </td>
               <td class="px-6 py-4">
-                {{ $event->description }}
+                {!! nl2br($event->description) !!}
               </td>
               <td class="px-6 py-4">
                 {{ $event->date }}
@@ -69,7 +69,7 @@
                 <img src="{{ asset($event->image_url) }}" alt="">
               </td>
               <td class="flex justify-center gap-2 px-6 py-4 items-center">
-                <a href="#" class="font-medium text-blue-600 hover:underline dark:text-blue-500">Edit</a>
+                <a href="{{ route('admin.events.edit', ['id' =>$event->id]) }}" class="font-medium text-blue-600 hover:underline dark:text-blue-500">Edit</a>
                 <form action="{{ route('admin.events.destroy', ['id' => $event->id]) }}" method="POST">
                   @csrf
                   @method('DELETE')

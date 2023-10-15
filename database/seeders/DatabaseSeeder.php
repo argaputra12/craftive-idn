@@ -25,8 +25,8 @@ class DatabaseSeeder extends Seeder
         $this -> call([
             CategorySeeder::class,
             // EventCategorySeeder::class,
-            TicketSeeder::class,
-            PaymentMethodSeeder::class,
+            // TicketSeeder::class,
+            // PaymentMethodSeeder::class,
             AdminSeeder::class,
             TicketBuyerSeeder::class,
         ]);

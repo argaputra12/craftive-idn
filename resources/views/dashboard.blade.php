@@ -16,7 +16,9 @@
       <img src="{{ asset('storage/images/group.png') }}" alt="" class="h-16 w-16">
       <h1 class="font-poppins text-[64px] font-bold text-primary-purple">We Provide Various <span
           class="text-primary-orange underline decoration-2 underline-offset-4">Events</span> For You</h1>
-      <p class="w-4/5">Tidak perlu bingung lagi untuk mengadakan workshop kreatif dengan biaya yang murah dan fasilitas yang lengkap. Disini kamu bisa mengeksplorasi kemampuanmu dengan bertemu bersama teman-teman yang akan berkreasi bersama!
+      <p class="w-4/5">Tidak perlu bingung lagi untuk mengadakan workshop kreatif dengan biaya yang murah dan fasilitas
+        yang lengkap. Disini kamu bisa mengeksplorasi kemampuanmu dengan bertemu bersama teman-teman yang akan berkreasi
+        bersama!
       </p>
       <div class="flex justify-end pr-20">
         <img src="{{ asset('storage/images/group-1.png') }}" alt="" class="h-16 w-16">
@@ -63,15 +65,15 @@
       <div class="relative h-56 overflow-hidden rounded-lg md:h-80">
         <!-- Item 1 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-          <div style="background-image: url('{{ asset('storage/images/tumurun.jpg') }}');"
+          <div style="background-image: url('{{ asset('storage/images/headers/Flower-Box-Arrangement.png') }}');"
             class="z-0 h-full w-full rounded-lg bg-cover bg-center">
             <div
               class="absolute inset-0 flex items-end justify-center bg-opacity-10 bg-gradient-to-t from-black from-10% py-11">
               <div class="flex flex-col text-white">
-                <h2 class="text-center text-xl font-semibold">Nama Event</h2>
-                <div class="flex items-center gap-1 text-xs text-[#BBBBBB]">
+                <h2 class="text-center text-xl font-semibold">Workshop: Flower Box Arrangement x Flowerchams</h2>
+                <div class="flex items-center justify-center gap-1 text-xs text-[#BBBBBB]">
                   <i class="fa-regular fa-calendar"></i>
-                  <p class="font-medium">10 Desember 2023</p>
+                  <p class="font-medium">29 Oktober 2023</p>
                 </div>
               </div>
             </div>
@@ -84,10 +86,10 @@
             <div
               class="absolute inset-0 flex items-end justify-center bg-opacity-10 bg-gradient-to-t from-black from-10% py-11">
               <div class="flex flex-col text-white">
-                <h2 class="text-center text-xl font-semibold">Nama Event</h2>
-                <div class="flex items-center gap-1 text-xs text-[#BBBBBB]">
+                <h2 class="text-center text-xl font-semibold">Coming Soon</h2>
+                <div class="flex items-center justify-center gap-1 text-xs text-[#BBBBBB]">
                   <i class="fa-regular fa-calendar"></i>
-                  <p class="font-medium">10 Desember 2023</p>
+                  <p class="font-medium">Coming Soon</p>
                 </div>
               </div>
             </div>
@@ -104,7 +106,7 @@
     </div>
 
     <!-- Kategori -->
-    <section id="categories-container" class="py-8 px-14">
+    <section id="categories-container" class="px-14 py-8">
       <div class="mx-auto max-w-screen-xl">
         <div id="categories" class="flex w-full justify-between gap-5">
           @foreach ($categories as $category)
@@ -126,53 +128,59 @@
         </h1>
         <div class="relative w-full">
           <div class="flex gap-10">
-            <div class="h-80 w-64 rounded-lg bg-white p-5 drop-shadow-md">
-              <div class="flex flex-col gap-8">
-                <img src="{{ asset('storage/images/bali-arts.jpg') }}" alt="" class="rounded-md">
+            <div class="h-[340px] w-64 gap-6 rounded-lg bg-white p-5 drop-shadow-md">
+              <div class="flex flex-col">
+                <div class="flex items-center justify-center">
+                  <img src="{{ asset('storage/images/coming-soon.png') }}" alt="" class="w-full rounded-md">
+                </div>
                 <div class="flex flex-col gap-3">
-                  <p class="text-xl font-semibold">Nama Event</p>
+                  <p class="text-xl font-semibold">Coming Soon</p>
                   <div class="flex">
                     <div class="rounded-md bg-primary-green px-2 py-1 text-xs text-primary-purple">
-                      Flower and Planting
+                      Coming Soon
                     </div>
                   </div>
                   <div class="flex items-center gap-1 text-xs">
                     <i class="fa-regular fa-calendar"></i>
-                    <p class="">10 Des 2023</p>
+                    <p class="">--</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="h-80 w-64 rounded-lg bg-white p-5 drop-shadow-md">
-              <div class="flex flex-col gap-8">
-                <img src="{{ asset('storage/images/bali-arts.jpg') }}" alt="" class="rounded-md">
+            <div class="h-[340px] w-64 gap-6 rounded-lg bg-white p-5 drop-shadow-md">
+              <div class="flex flex-col">
+                <div class="flex items-center justify-center">
+                  <img src="{{ asset('storage/images/coming-soon.png') }}" alt="" class="w-full rounded-md">
+                </div>
                 <div class="flex flex-col gap-3">
-                  <p class="text-xl font-semibold">Nama Event</p>
+                  <p class="text-xl font-semibold">Coming Soon</p>
                   <div class="flex">
                     <div class="rounded-md bg-primary-green px-2 py-1 text-xs text-primary-purple">
-                      Flower and Planting
+                      Coming Soon
                     </div>
                   </div>
                   <div class="flex items-center gap-1 text-xs">
                     <i class="fa-regular fa-calendar"></i>
-                    <p class="">10 Des 2023</p>
+                    <p class="">--</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="h-80 w-64 rounded-lg bg-white p-5 drop-shadow-md">
-              <div class="flex flex-col gap-8">
-                <img src="{{ asset('storage/images/bali-arts.jpg') }}" alt="" class="rounded-md">
+            <div class="h-[340px] w-64 gap-6 rounded-lg bg-white p-5 drop-shadow-md">
+              <div class="flex flex-col">
+                <div class="flex items-center justify-center">
+                  <img src="{{ asset('storage/images/coming-soon.png') }}" alt="" class="w-full rounded-md">
+                </div>
                 <div class="flex flex-col gap-3">
-                  <p class="text-xl font-semibold">Nama Event</p>
+                  <p class="text-xl font-semibold">Coming Soon</p>
                   <div class="flex">
                     <div class="rounded-md bg-primary-green px-2 py-1 text-xs text-primary-purple">
-                      Flower and Planting
+                      Coming Soon
                     </div>
                   </div>
                   <div class="flex items-center gap-1 text-xs">
                     <i class="fa-regular fa-calendar"></i>
-                    <p class="">10 Des 2023</p>
+                    <p class="">--</p>
                   </div>
                 </div>
               </div>
@@ -190,12 +198,13 @@
       <div class="flex w-full flex-wrap gap-10">
 
         @foreach ($events as $event)
-          <a href="{{ route('events.index', ['id' => $event->id]) }}" class="flex h-[212px] w-[48%] gap-5 rounded-lg bg-white p-5 drop-shadow-md hover:drop-shadow-xl transition-all duration-300">
-            <img src="{{ asset('storage/images/bali-arts.jpg') }}" alt="" class="h-44 w-44 rounded-md">
+          <a href="{{ route('events.index', ['id' => $event->id]) }}"
+            class="flex h-[212px] w-[48%] gap-5 rounded-lg bg-white p-5 drop-shadow-md transition-all duration-300 hover:drop-shadow-xl">
+            <img src="{{ asset($event->image_url) }}" alt="" class="h-44 w-44 rounded-md">
             <div class="flex flex-col justify-between">
               <div class="flex flex-col gap-1">
                 <p class="font-poppins text-xl font-semibold">{{ $event->name }}</p>
-                <p class="text-[#606060] max-h-[72px] text-ellipsis overflow-hidden">{{ $event->description }}</p>
+                <p class="max-h-[72px] overflow-hidden text-ellipsis text-[#606060]">{{ $event->description }}</p>
               </div>
               <div class="flex gap-2">
                 @foreach ($event->eventCategory as $category)
@@ -221,7 +230,7 @@
   </div>
 
   <!-- Hubungi Kami -->
-<section id="contact" class="h-72 w-full bg-planting bg-cover bg-fixed bg-center">
+  <section id="contact" class="h-72 w-full bg-planting bg-cover bg-fixed bg-center">
     <div class="flex h-full w-full flex-col items-center justify-center gap-5 bg-black bg-opacity-40">
       <h3 class="text-3xl font-bold text-white">Hubungi Kami Untuk Info Selengkapnya</h3>
       <button class="rounded-md bg-white px-7 py-2 font-medium">

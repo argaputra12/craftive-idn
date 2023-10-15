@@ -14,6 +14,7 @@ class Ticket extends Model
         'event_id',
         'stock',
         'price',
+        'name'
     ];
 
     // relationships

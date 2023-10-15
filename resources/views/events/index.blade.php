@@ -2,9 +2,8 @@
   <section class="bg-cover bg-center bg-no-repeat py-8 bg-blend-multiply"
     style="background-image: url('{{ asset('storage/images/bg-events.png') }}')">
     <div class="mx-auto max-w-screen-xl">
-      <div class="relative mb-10 flex w-full justify-center">
-        <img class="max-h-[470px] w-full rounded-2xl" src="{{ asset('storage/images/bali-arts.jpg') }}"
-          alt="image description">
+      <div class="relative mb-10 flex w-full justify-center rounded-lg bg-black">
+        <img class="max-h-[470px]" src="{{ asset($event->image_url) }}" alt="image description">
         <button data-modal-target="eventImage" data-modal-toggle="eventImage" type="button"
           class="absolute inset-0 flex items-center justify-center rounded-2xl bg-black text-3xl font-bold text-white opacity-0 transition-opacity duration-300 hover:opacity-50">Klik
           untuk melihat lebih jelas</button>
@@ -18,7 +17,7 @@
               <!-- Modal header -->
               <div class="flex items-start justify-between rounded-t border-b p-4 dark:border-gray-600">
                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                  Event Name
+                  {{ $event->name }}
                 </h3>
                 <button type="button"
                   class="ml-auto inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
@@ -33,7 +32,7 @@
               </div>
               <!-- Modal body -->
               <div class="space-y-6 p-6">
-                <img class="rounded-xl" src="{{ asset('storage/images/bali-arts.jpg') }}" alt="">
+                <img class="rounded-xl" src="{{ asset($event->image_url) }}" alt="">
               </div>
 
             </div>
@@ -43,13 +42,13 @@
       <div class="flex justify-between gap-4">
         <div class="flex w-3/5 flex-col gap-2 px-3">
           <div class="font-semibold">
-            {{ \Carbon\Carbon::parse($event->date)->format('l, d F Y') }}
+            {{ date('l, d F Y', strtotime($event->date)) }}
           </div>
           <div class="mb-6 font-heebo text-5xl font-bold">
             {{ $event->name }}
           </div>
           <div class="">
-            {{ $event->description }}
+            {!! nl2br($event->description) !!}
           </div>
           <div class="my-6 flex flex-col gap-3">
             <h2 class="text-2xl font-bold">Tanggal dan Waktu</h2>
@@ -68,13 +67,15 @@
             </div>
           </div>
         </div>
-        <div class="flex w-1/3 flex-col gap-4">
+        <div class="flex w-1/3 flex-col gap-8">
           @foreach ($tickets as $ticket)
             <form action="{{ route('orders.create', ['id' => $ticket->id]) }}">
               <div class="flex flex-col gap-2 rounded-xl border-4 border-primary-purple px-5 py-3">
                 <h2 class="text-2xl font-bold">{{ $event->name }}</h2>
+                <h3 class="text-lg font-medium text-red-500">{{ $ticket->name }}</h3>
                 <h5 class="mb-5 font-semibold text-gray-500">
-                  {{ \Carbon\Carbon::parse($event->date)->format('l, d F Y') }}</h5>
+                  {{ date('l, d F Y', strtotime($event->date)) }}
+                </h5>
                 <h6>
                   <span class="font-bold">Harga Tiket:</span>
                   {{ Helper::convertCurrency($ticket->price) }}
@@ -93,3 +94,4 @@
   </section>
 
 </x-app-layout>
+

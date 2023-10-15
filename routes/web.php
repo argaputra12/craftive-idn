@@ -47,7 +47,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
         Route::get('/create', [EventController::class, 'create'])->name('admin.events.create');
         Route::post('/', [EventController::class, 'store'])->name('admin.events.store');
         Route::get('/{id}/edit', [EventController::class, 'edit'])->name('admin.events.edit');
-        Route::patch('/{id}', [EventController::class, 'update'])->name('admin.events.update');
+        Route::put('/{id}', [EventController::class, 'update'])->name('admin.events.update');
         Route::delete('/{id}', [EventController::class, 'destroy'])->name('admin.events.destroy');
     });
 
@@ -56,7 +56,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
         Route::get('/create', [TicketController::class, 'create'])->name('admin.tickets.create');
         Route::post('/', [TicketController::class, 'store'])->name('admin.tickets.store');
         Route::get('/{id}/edit', [TicketController::class, 'edit'])->name('admin.tickets.edit');
-        Route::patch('/{id}', [TicketController::class, 'update'])->name('admin.tickets.update');
+        Route::put('/{id}', [TicketController::class, 'update'])->name('admin.tickets.update');
         Route::delete('/{id}', [TicketController::class, 'destroy'])->name('admin.tickets.destroy');
     });
 
@@ -65,7 +65,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
         Route::get('/create', [CategoryController::class, 'create'])->name('admin.categories.create');
         Route::post('/', [CategoryController::class, 'store'])->name('admin.categories.store');
         Route::get('/{id}/edit', [CategoryController::class, 'edit'])->name('admin.categories.edit');
-        Route::patch('/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
+        Route::put('/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
         Route::delete('/{id}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
     });
 
@@ -77,7 +77,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
 Route::middleware('auth')->group(function () {
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 });

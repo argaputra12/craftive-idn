@@ -29,10 +29,6 @@
           class="fa-solid fa-caret-right text-transparent transition-all duration-300 group-hover:text-primary-purple"></i>
         <p class="transition-all duration-300 group-hover:font-semibold group-hover:text-primary-orange">Orders</p>
       </a>
-      {{-- <a href="" class="group flex p-4 justify-center items-center gap-3 font-poppins w-32">
-        <i class="fa-solid fa-caret-right group-hover:text-primary-purple text-transparent transition-all duration-300"></i>
-        <p class="group-hover:text-primary-orange transition-all duration-300 group-hover:font-semibold">Gallery</p>
-      </a> --}}
     </div>
     <div class="flex items-center justify-end gap-7">
       @guest
@@ -50,12 +46,13 @@
         </a>
       @endguest
       @auth
-        <a href="{{ route('logout') }}">
-          <button
+        <form action="{{ route('logout') }}" method="POST">
+          @csrf
+          <button type="submit"
             class="flex h-12 w-40 items-center justify-center rounded-md border-2 border-primary-purple font-medium text-primary-purple active:bg-[#563085]">
             Logout
           </button>
-        </a>
+        </form>
       @endauth
     </div>
     <button data-collapse-toggle="navbar-default" type="button"
