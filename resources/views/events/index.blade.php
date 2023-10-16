@@ -69,23 +69,31 @@
         </div>
         <div class="flex w-1/3 flex-col gap-8">
           @foreach ($tickets as $ticket)
-            <form action="{{ route('orders.create', ['id' => $ticket->id]) }}">
-              <div class="flex flex-col gap-2 rounded-xl border-4 border-primary-purple px-5 py-3">
-                <h2 class="text-2xl font-bold">{{ $event->name }}</h2>
-                <h3 class="text-lg font-medium text-red-500">{{ $ticket->name }}</h3>
-                <h5 class="mb-5 font-semibold text-gray-500">
-                  {{ date('l, d F Y', strtotime($event->date)) }}
-                </h5>
-                <h6>
-                  <span class="font-bold">Harga Tiket:</span>
-                  {{ Helper::convertCurrency($ticket->price) }}
-                </h6>
-              </div>
-              <button
-                class="mt-3 h-10 w-full rounded-lg bg-orange-500 font-bold text-white transition-colors duration-300 hover:bg-primary-orange">
-                Beli Tiket
-              </button>
-            </form>
+            @if ($ticket->stock == 0)
+              @continue
+            @else
+              <form action="{{ route('orders.create', ['id' => $ticket->id]) }}">
+                <div class="flex flex-col gap-2 rounded-xl border-4 border-primary-purple px-5 py-3">
+                  <h2 class="text-2xl font-bold">{{ $event->name }}</h2>
+                  <h3 class="text-lg font-medium text-red-500">{{ $ticket->name }}</h3>
+                  <h5 class="mb-5 font-semibold text-gray-500">
+                    {{ date('l, d F Y', strtotime($event->date)) }}
+                  </h5>
+                  <h6 class="@if ($ticket->stock <= 5) text-red-500 @endif">
+                    <span class="font-bold">Stok:</span>
+                    {{ $ticket->stock }}
+                  </h6>
+                  <h6>
+                    <span class="font-bold">Harga Tiket:</span>
+                    {{ Helper::convertCurrency($ticket->price) }}
+                  </h6>
+                </div>
+                <button
+                  class="mt-3 h-10 w-full rounded-lg bg-orange-500 font-bold text-white transition-colors duration-300 hover:bg-primary-orange">
+                  Beli Tiket
+                </button>
+              </form>
+            @endif
           @endforeach
 
         </div>
