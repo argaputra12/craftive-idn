@@ -211,6 +211,7 @@ class OrderController extends Controller
 
 
         $order = Order::where('external_id', $xenditInvoice['external_id'])->firstOrFail();
+        $ticket = Ticket::where('id', $order->ticket_id)->firstOrFail();
 
         if (!$order) {
             return response()->json([
@@ -225,6 +226,7 @@ class OrderController extends Controller
             $order->update([
                 'status' => 'expired',
             ]);
+            $ticket->increment('stock', $order->quantity);
         } else {
             $paidAt = Carbon::parse($xenditInvoice['paid_at']);
             $order->update([
