@@ -96,7 +96,7 @@
                     {{ Helper::convertCurrency($ticket->price) }}
                   </h6>
                 </div>
-                @if ($event->date < now()->setTimezone('Asia/Bangkok'))
+                @if ($event->date < now()->setTimezone('Asia/Bangkok') || $ticket->registration_closed_at < now()->setTimezone('Asia/Bangkok'))
                   <div class="mt-3 text-sm text-red-500">
                     <span class="font-medium">Pendaftaran telah ditutup</span>
                   </div>
