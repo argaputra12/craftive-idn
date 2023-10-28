@@ -28,6 +28,9 @@
               Deskripsi Tiket
             </th>
             <th scope="col" class="px-6 py-3">
+              Pendafataran Ditutup
+            </th>
+            <th scope="col" class="px-6 py-3">
               Stok
             </th>
             <th scope="col" class="px-6 py-3">
@@ -50,6 +53,9 @@
                 </td>
                 <td class="px-6 py-4">
                   {{ $ticket->name }}
+                </td>
+                <td class="px-6 py-4">
+                  {{ $ticket->registration_closed_at }}
                 </td>
                 <td class="px-6 py-4">
                   {{ $ticket->stock }}

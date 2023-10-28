@@ -73,7 +73,7 @@
                 {{ $order->user->ticketBuyer->phone_number }}
               </td>
               <td class="px-6 py-4">
-                {{ $order->user->nik }}
+                {{ $order->user->ticketBuyer->nik }}
               </td>
               <td class="px-6 py-4">
                 {{ $order->ticket->event->name }}

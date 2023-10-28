@@ -33,6 +33,7 @@ class TicketController extends Controller
             'event_name' => 'required|string',
             'price' => 'required|numeric',
             'stock' => 'required|integer',
+            'registration_closed_at' => 'required|date',
         ]);
 
         $event_id = Event::where('name', $request->event_name)->first()->id;
@@ -42,6 +43,7 @@ class TicketController extends Controller
             'price' => $request->price,
             'stock' => $request->stock,
             'name' => $request->name ?? null,
+            'registration_closed_at' => $request->registration_closed_at ,
         ]);
 
         return redirect()->route('admin.tickets')->with('success', 'Ticket created successfully!');
@@ -64,7 +66,8 @@ class TicketController extends Controller
             'event_name' => 'required|string',
             'price' => 'required|numeric',
             'stock' => 'required|integer',
-            'name' => 'nullable|string'
+            'name' => 'nullable|string',
+            'registration_closed_at' => 'required|date',
         ]);
 
         $event_id = Event::where('name', $request->event_name)->first()->id;
@@ -76,6 +79,7 @@ class TicketController extends Controller
             'price' => $request->price,
             'stock' => $request->stock,
             'name' => $request->name ?? null,
+            'registration_closed_at' => $request->registration_closed_at ,
         ]);
 
         return redirect()->route('admin.tickets')->with('success', 'Ticket updated successfully!');

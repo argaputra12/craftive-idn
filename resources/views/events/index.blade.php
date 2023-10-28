@@ -69,12 +69,20 @@
         </div>
         <div class="flex w-1/3 flex-col gap-8">
           @foreach ($tickets as $ticket)
-            @if ($ticket->stock == 0)
-              @continue
-            @else
+            @if (
+                $ticket->stock > 0 &&
+                    ($ticket->registration_closed_at == '0000-00-00 00:00:00' ||
+                        $ticket->registration_closed_at > now()->setTimezone('Asia/Bangkok')))
               <form action="{{ route('orders.create', ['id' => $ticket->id]) }}">
                 <div class="flex flex-col gap-2 rounded-xl border-4 border-primary-purple px-5 py-3">
                   <h2 class="text-2xl font-bold">{{ $event->name }}</h2>
+                  @if ($ticket->registration_closed_at == '0000-00-00 00:00:00')
+                    <span class="text-sm font-light">(Pendaftaran dibuka sampai
+                      {{ date('d F Y, h:i A', strtotime($event->date)) }})</span>
+                  @else
+                    <span class="text-sm font-light">(Pendaftaran dibuka sampai
+                      {{ date('d F Y, h:i A', strtotime($ticket->registration_closed_at)) }})</span>
+                  @endif
                   <h3 class="text-lg font-medium text-red-500">{{ $ticket->name }}</h3>
                   <h5 class="mb-5 font-semibold text-gray-500">
                     {{ date('l, d F Y', strtotime($event->date)) }}
@@ -88,10 +96,16 @@
                     {{ Helper::convertCurrency($ticket->price) }}
                   </h6>
                 </div>
-                <button
-                  class="mt-3 h-10 w-full rounded-lg bg-orange-500 font-bold text-white transition-colors duration-300 hover:bg-primary-orange">
-                  Beli Tiket
-                </button>
+                @if ($event->date < now()->setTimezone('Asia/Bangkok'))
+                  <div class="mt-3 text-sm text-red-500">
+                    <span class="font-medium">Pendaftaran telah ditutup</span>
+                  </div>
+                @else
+                  <button
+                    class="mt-3 h-10 w-full rounded-lg bg-orange-500 font-bold text-white transition-colors duration-300 hover:bg-primary-orange">
+                    Beli Tiket
+                  </button>
+                @endif
               </form>
             @endif
           @endforeach

@@ -58,6 +58,16 @@
                 class="font-medium">{{ $errors->first('price') }}</span></p>
           @endif
         </div>
+        <div class="mb-6">
+          <label for="registration_closed_at" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Pendaftaran ditutup</label>
+          <input type="datetime-local" id="registration_closed_at" name="registration_closed_at" value="{{ $ticket->registration_closed_at }}"
+            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-purple-500 focus:ring-purple-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-purple-500 dark:focus:ring-purple-500"
+            required>
+          @if ($errors->has('registration_closed_at'))
+            <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                class="font-medium">{{ $errors->first('registration_closed_at') }}</span></p>
+          @endif
+        </div>
 
         <button type="submit"
           class="w-full rounded-lg bg-purple-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800 sm:w-auto">Submit</button>

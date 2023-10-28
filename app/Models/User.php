@@ -51,7 +51,7 @@ class User extends Authenticatable
      */
     public function ticketBuyer()
     {
-        return $this->hasMany(TicketBuyer::class);
+        return $this->hasOne(TicketBuyer::class);
     }
 
     /**
