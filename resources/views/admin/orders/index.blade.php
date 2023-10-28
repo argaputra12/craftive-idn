@@ -23,6 +23,15 @@
               Nama Pembeli
             </th>
             <th scope="col" class="px-6 py-3">
+              Email
+            </th>
+            <th scope="col" class="px-6 py-3">
+              No Telp
+            </th>
+            <th scope="col" class="px-6 py-3">
+              NIK
+            </th>
+            <th scope="col" class="px-6 py-3">
               Nama Event
             </th>
             <th scope="col" class="px-6 py-3">
@@ -58,6 +67,15 @@
                 {{ $order->user->name }}
               </td>
               <td class="px-6 py-4">
+                {{ $order->user->email }}
+              </td>
+              <td class="px-6 py-4">
+                {{ $order->user->ticketBuyer->phone_number }}
+              </td>
+              <td class="px-6 py-4">
+                {{ $order->user->nik }}
+              </td>
+              <td class="px-6 py-4">
                 {{ $order->ticket->event->name }}
               </td>
               <td class="px-6 py-4">
@@ -76,7 +94,9 @@
                 {{ $order->status }}
               </td>
               <td class="px-6 py-4">
-                {{ $order->invoice_url }}
+                <a href="{{ $order->invoice_url }}" class="text-blue-600 hover:underline font-medium">
+                  Klik di sini
+                </a>
               </td>
               <td class="px-6 py-4 text-right">
                 <a href="#" class="font-medium text-blue-600 hover:underline dark:text-blue-500">Edit</a>

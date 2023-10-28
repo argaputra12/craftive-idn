@@ -59,11 +59,6 @@
              href="{{ route('register') }}">
              {{ __('Dont have an account?') }}
            </a>
-           {{-- <p>or</p>
-            <a class="underline text-sm hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              href="{{ route('eo.login') }}">
-              {{ __('Login as EO?') }}
-            </a> --}}
          </div>
          <button
            class="inline-flex items-center rounded-md border border-transparent bg-primary-purple px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white transition duration-150 ease-in-out hover:bg-secondary-purple hover:text-primary-purple focus:bg-primary-purple focus:outline-none focus:ring-2 focus:ring-primary-purple focus:ring-offset-2">

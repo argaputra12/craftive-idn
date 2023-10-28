@@ -100,12 +100,14 @@ class OrderController extends Controller
 
         $invoice = \Xendit\Invoice::create($xenditPayload);
 
-        $ticketBuyer = TicketBuyer::create([
-            'user_id' => auth()->user()->id,
-            'name' => $request->full_name,
-            'phone_number' => $request->phone,
-            'nik' => $request->nik,
-        ]);
+        if(!TicketBuyer::where('user_id', auth()->user()->id)->first()){
+          $ticketBuyer = TicketBuyer::create([
+              'user_id' => auth()->user()->id,
+              'name' => $request->full_name,
+              'phone_number' => $request->phone,
+              'nik' => $request->nik,
+          ]);
+        }
 
         $order = Order::create([
             'user_id' => auth()->user()->id,
